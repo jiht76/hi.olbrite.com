@@ -17,7 +17,7 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="light-theme">
+<body class="light-theme hero-locked">
 
   <!-- Top Navigation (Mobile Accordion Drawer + Compact Mobile Header) -->
   <nav class="navbar" id="main-nav">
@@ -26,7 +26,7 @@
         <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo">
       </a>
 
-      <!-- Mobile Hamburger Button -->
+      <!-- Mobile Hamburger Button (Border-free 3 clean lines) -->
       <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
         <span class="hamburger-bar"></span>
         <span class="hamburger-bar"></span>
@@ -55,7 +55,7 @@
     </div>
   </nav>
 
-  <!-- Interactive Hero Section (Scroll Scrubbing & Video Loop) -->
+  <!-- Interactive Hero Section (Touch / Click Experience & Video Loop) -->
   <div class="hero-scroll-container" id="hero-experience">
     <div class="hero-sticky-stage">
       
@@ -64,7 +64,7 @@
         <canvas id="hero-canvas" class="hero-canvas"></canvas>
         <video id="hero-loop-video" class="hero-video-loop" src="assets/videos/hero-video-loop-hd.mp4" muted loop playsinline preload="auto"></video>
         
-        <!-- Glass Doors Effect: Frost blur with central vertical seam that parts open on scroll -->
+        <!-- Glass Doors Effect: Frost blur with central vertical seam that parts open on entry -->
         <div class="glass-door-container" id="glass-doors">
           <div class="glass-door-leaf glass-door-left"></div>
           <div class="glass-door-seam"></div>
@@ -74,10 +74,10 @@
         <div class="hero-media-overlay" id="hero-media-overlay"></div>
       </div>
 
-      <!-- Welcome Floating Glass Pill (larger, shifted down on entry) -->
-      <div class="hero-status-pill" id="hero-status-pill">
+      <!-- Welcome Interactive Glass Button / Pill (Click / Touch to enter) -->
+      <div class="hero-status-pill" id="hero-status-pill" role="button" tabindex="0" aria-label="Ingresar a la oficina Olbrite">
         <span class="scroll-indicator-dot"></span>
-        <span id="hero-scroll-status">Welcome to Olbrite... Scroll to Enter</span>
+        <span id="hero-scroll-status">Welcome!... Click to enter</span>
       </div>
 
       <!-- Hero Left Foreground Content (staggered reveal on loop) -->

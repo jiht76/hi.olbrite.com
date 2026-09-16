@@ -58,6 +58,10 @@ export class HeroController {
     this.isTransformationComplete = false;
     this.isPlayingSequence = false;
 
+    // Detect touch device for adaptive prompt text
+    this.isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    this.welcomeText = this.isTouchDevice ? 'Welcome!... Touch to enter' : 'Welcome!... Click to enter';
+
     // Narrative statements loop
     this.narrativeStatements = [
       "What can we do for you?",
@@ -78,17 +82,22 @@ export class HeroController {
   }
 
   init() {
+    // Set initial welcome prompt immediately
+    if (this.promptText) {
+      this.promptText.textContent = this.welcomeText;
+    }
+
+    // Keep page scroll locked until user enters the office
+    document.body.classList.add('hero-locked');
+
     this.setupDimensions();
     window.addEventListener('resize', () => this.setupDimensions(), { passive: true });
 
-    // Preload all frames immediately
-    this.preloadAllFrames();
-
-    // Attach user triggers
+    // Attach click and touch triggers
     this.setupTriggerListeners();
 
-    // Render initial frame
-    this.loadImage(1);
+    // Priority load frame 1, then progressively preload remainder
+    this.loadFirstFrameAndPreloadRemaining();
   }
 
   setupDimensions() {
@@ -109,8 +118,35 @@ export class HeroController {
     this.renderFrame(this.currentFrameIndex);
   }
 
-  preloadAllFrames() {
-    for (let i = 1; i <= this.totalFrames; i++) {
+  loadFirstFrameAndPreloadRemaining() {
+    const firstImg = new Image();
+    const formatted = String(1).padStart(3, '0');
+    firstImg.src = `${this.framePrefix}${formatted}${this.frameExt}`;
+    
+    firstImg.onload = () => {
+      this.images[0] = firstImg;
+      this.renderFrame(1);
+      
+      // Make status pill active & inviting
+      if (this.statusPill) {
+        this.statusPill.classList.add('ready');
+      }
+
+      // Preload remaining frames
+      this.preloadRemainingFrames();
+    };
+
+    firstImg.onerror = () => {
+      // Fallback
+      if (this.statusPill) {
+        this.statusPill.classList.add('ready');
+      }
+      this.preloadRemainingFrames();
+    };
+  }
+
+  preloadRemainingFrames() {
+    for (let i = 2; i <= this.totalFrames; i++) {
       this.loadImage(i);
     }
   }
@@ -132,20 +168,36 @@ export class HeroController {
   }
 
   setupTriggerListeners() {
-    const onFirstUserIntent = (e) => {
+    const handleEntryTrigger = (e) => {
       if (this.hasTriggeredAutoPlay) return;
-      if (e.type === 'wheel' && e.deltaY <= 0) return;
+      if (e && e.cancelable && e.type !== 'click') {
+        e.preventDefault();
+      }
       this.startCinematicTransformation();
     };
 
-    window.addEventListener('wheel', onFirstUserIntent, { passive: true });
-    window.addEventListener('touchmove', onFirstUserIntent, { passive: true });
-    window.addEventListener('scroll', () => {
-      if (!this.hasTriggeredAutoPlay && window.scrollY > 8) {
-        this.startCinematicTransformation();
-      }
-    }, { passive: true });
+    // 1. Touch / Click on Central Status Pill
+    if (this.statusPill) {
+      this.statusPill.addEventListener('click', handleEntryTrigger);
+      this.statusPill.addEventListener('touchend', handleEntryTrigger);
+      this.statusPill.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleEntryTrigger(e);
+        }
+      });
+    }
 
+    // 2. Touch / Click on Glass Doors & Canvas Stage
+    if (this.glassDoors) {
+      this.glassDoors.addEventListener('click', handleEntryTrigger);
+      this.glassDoors.addEventListener('touchend', handleEntryTrigger);
+    }
+    if (this.canvas) {
+      this.canvas.addEventListener('click', handleEntryTrigger);
+      this.canvas.addEventListener('touchend', handleEntryTrigger);
+    }
+
+    // 3. CTA Play demo button
     const playBtn = document.querySelector('#btn-play-demo');
     if (playBtn) {
       playBtn.addEventListener('click', (e) => {
@@ -212,6 +264,13 @@ export class HeroController {
   completeTransformation() {
     this.isPlayingSequence = false;
     this.isTransformationComplete = true;
+
+    // Unlock page scrolling so the user can now explore the rest of the site
+    document.body.classList.remove('hero-locked');
+    document.body.classList.add('hero-unlocked');
+    if (this.container) {
+      this.container.classList.add('unlocked');
+    }
 
     // 1. Activate Video Loop in HD
     if (this.videoLoop) {
