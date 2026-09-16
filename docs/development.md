@@ -25,21 +25,33 @@
 ### B. Experiencia de Entrada ("Glass Doors" & Welcome Flow)
 1. **Efecto Puerta de Vidrio (Frosted Glass Doors)**:
    - Al cargar la página, el espacio de trabajo se encuentra cubierto por dos hojas de vidrio esmerilado (`backdrop-filter: blur(28px)`) separadas por una junta luminosa vertical en el centro.
-2. **Secuencia Narrativa de Textos**:
-   - **Estado Inicial**: Badge flotante aumentado (`top: 70%`) con el mensaje: `Welcome to Olbrite... Scroll to Enter`.
-   - **Al iniciar el primer scroll**: Las puertas se separan hacia los lados (`translateX(-100%)` y `translateX(100%)`) y el badge actualiza a: `Our Agents are Working!` seguido de `Please get in ✨`.
+2. **Mecanismo de Activación por Touch / Click (No Scroll)**:
+   - Para prevenir que el usuario haga scroll antes de cargar los cuadros o salte la cinemática, el scroll está bloqueado inicialmente (`body.hero-locked`).
+   - El gatillo de entrada ahora es exclusivamente táctil o clic (en la píldora, las puertas o el canvas).
+   - Una vez finalizada la transformación al loop, se desbloquea el scroll del cuerpo (`hero-unlocked`) para permitir explorar el resto de la página libremente.
+3. **Detección Dinámica de Dispositivo**:
+   - Dispositivos táctiles (móvil/tablet): `Welcome!... Touch to enter`.
+   - Dispositivos de escritorio: `Welcome!... Click to enter`.
+   - Animación de pulsación luminosa (`ready`) tan pronto como el primer cuadro está disponible en memoria.
+4. **Secuencia Narrativa de Textos**:
+   - **Al pulsar para entrar**: Las puertas se abren hacia los lados y el badge actualiza a: `Our Agents are Working!` seguido de `Please get in ✨`.
    - **Al llegar al Loop**:
-     - El badge se traslada a la izquierda arriba del título: `✨ All Agents Active!`.
-     - El título principal H1 entra con el gradiente corporativo Olbrite (`#2e1065` a `#754be7`) con: `What can we do for you?`.
-     - Luego rota sutilmente cada 3.8 segundos por la lista de propuestas de valor y automatización.
-     - Social Proof actualizado: `Over 500 agents and projects`.
+     - El badge se ancla como tag a la izquierda arriba del título: `✨ All Agents Active!`.
+     - El título principal H1 entra con el gradiente corporativo Olbrite: `What can we do for you?`.
+     - Espaciado vertical ampliado generosamente (3.5rem desktop, 2.75rem móvil) hacia los botones CTA para evitar solapamientos y dar gran balance visual.
+     - Rota cada 3.8 segundos por la lista de propuestas de valor y automatización.
+     - Social Proof: `Over 500 agents and projects`.
 
 ### C. Optimización Móvil (Celulares y Tablets)
-1. **Menú Acordeón**:
-   - En pantallas menores a 900px, la navegación horizontal se transforma en un botón hamburguesa animado que despliega un cajón acordeón vertical con efecto cristal (`backdrop-filter: blur(20px)`).
-2. **Header Compacto**:
+1. **Menú Hamburguesa Sin Bordes**:
+   - Botón minimalista de 3 líneas limpias, sin bordes ni sombras que compitan con el header, animándose a "X" al abrir.
+2. **Acordeón Edge-to-Edge Sin Cortes ni Espacios Vacíos**:
+   - El cajón se extiende de borde a borde (`left: -1.25rem; width: calc(100% + 2.5rem)`), integrándose perfectamente con el Navbar.
+   - Totalmente oculto (`max-height: 0`, `visibility: hidden`, `border: none`) al estar cerrado para eliminar líneas o espacios blancos flotantes.
+   - Altura máxima y paddings calibrados para que el botón final ("Book a demo") sea 100% visible sin cortes y sin generar vacíos blancos excesivos abajo.
+3. **Header Compacto**:
    - Se redujo la altura y paddings del Navbar en móvil para maximizar el área visible del video y los avatares.
-3. **Píldora y Botonera Responsive**:
+4. **Píldora y Botonera Responsive**:
    - El badge de bienvenida se adapta dinámicamente con `width: 90%; max-width: 360px`, y los botones CTA se apilan verticalmente para una pulsación ergonómica.
 
 ### D. Hallazgos en el Despliegue con here.now
