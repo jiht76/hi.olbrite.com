@@ -231,7 +231,7 @@ export class HeroController {
     }
 
     if (this.promptText) {
-      this.promptText.innerHTML = '✨ Active AI Office';
+      this.promptText.innerHTML = '✨ All Agents Active!';
     }
 
     // 4. Set Main Title to: "What can we do for you?"
