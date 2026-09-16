@@ -178,10 +178,10 @@ export class HeroController {
       if (this.promptText && !this.isTransformationComplete) {
         this.promptText.innerHTML = 'Please get in ✨';
       }
-    }, 1800);
+    }, 3200);
 
-    // Cadence: 17 FPS (~58.8ms per frame) for ~4.7s smooth transformation
-    const fps = 17;
+    // Cadence: 8.5 FPS (~117.6ms per frame, 50% slower) for ~9.4s deliberate, cinematic transformation
+    const fps = 8.5;
     const interval = 1000 / fps;
     let then = performance.now();
 

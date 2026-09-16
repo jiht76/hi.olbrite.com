@@ -19,28 +19,39 @@
 </head>
 <body class="light-theme">
 
-  <!-- Top Navigation (Hidden initially, slides down on loop) -->
+  <!-- Top Navigation (Mobile Accordion Drawer + Compact Mobile Header) -->
   <nav class="navbar" id="main-nav">
     <div class="nav-container">
       <a href="#" class="brand-logo" aria-label="Olbrite Home">
         <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo">
       </a>
-      
-      <ul class="nav-links">
-        <li><a href="#hero-experience">Platform</a></li>
-        <li><a href="#core-solution">Solutions</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#industry">Industries</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
 
-      <div class="nav-actions">
-        <a href="#login" class="btn-login">Log in</a>
-        <a href="#demo" class="btn-primary">
-          <span>Book a demo</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      
+      <!-- Nav Links (Desktop horizontal / Mobile animated accordion drawer) -->
+      <div class="nav-menu-wrapper" id="nav-menu-wrapper">
+        <ul class="nav-links">
+          <li><a href="#hero-experience" class="nav-link-item">Platform</a></li>
+          <li><a href="#core-solution" class="nav-link-item">Solutions</a></li>
+          <li><a href="#results" class="nav-link-item">Results</a></li>
+          <li><a href="#industry" class="nav-link-item">Industries</a></li>
+          <li><a href="#contact" class="nav-link-item">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#login" class="btn-login">Log in</a>
+          <a href="#demo" class="btn-primary">
+            <span>Book a demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
+
     </div>
   </nav>
 
@@ -63,7 +74,7 @@
         <div class="hero-media-overlay" id="hero-media-overlay"></div>
       </div>
 
-      <!-- Welcome Floating Glass Pill (larger, shifted 20% down on entry) -->
+      <!-- Welcome Floating Glass Pill (larger, shifted down on entry) -->
       <div class="hero-status-pill" id="hero-status-pill">
         <span class="scroll-indicator-dot"></span>
         <span id="hero-scroll-status">Welcome to Olbrite... Scroll to Enter</span>
