@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es" class="light-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olbrite | AI Agents, CRM & Conversation Automation</title>
+  <meta name="description" content="AI agents, CRM and automation that turn every conversation into growth. Unify WhatsApp, Instagram, Messenger, SMS and more with intelligent 3D avatars.">
+  
+  <!-- Favicon / Branding -->
+  <link rel="icon" type="image/png" href="assets/branding/olbrite-logo-transparent.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-theme">
+
+  <!-- Top Navigation (Hidden initially, slides down on loop) -->
+  <nav class="navbar" id="main-nav">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="Olbrite Home">
+        <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo">
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#hero-experience">Platform</a></li>
+        <li><a href="#core-solution">Solutions</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#industry">Industries</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#login" class="btn-login">Log in</a>
+        <a href="#demo" class="btn-primary">
+          <span>Book a demo</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Interactive Hero Section (Scroll Scrubbing & Video Loop) -->
+  <div class="hero-scroll-container" id="hero-experience">
+    <div class="hero-sticky-stage">
+      
+      <!-- Media Stage: Canvas Scrubbing + Ambient Video Loop -->
+      <div class="hero-media-backdrop">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <video id="hero-loop-video" class="hero-video-loop" src="assets/videos/hero-video-loop-hd.mp4" muted loop playsinline preload="auto"></video>
+        
+        <!-- Glass Doors Effect: Frost blur with central vertical seam that parts open on scroll -->
+        <div class="glass-door-container" id="glass-doors">
+          <div class="glass-door-leaf glass-door-left"></div>
+          <div class="glass-door-seam"></div>
+          <div class="glass-door-leaf glass-door-right"></div>
+        </div>
+
+        <div class="hero-media-overlay" id="hero-media-overlay"></div>
+      </div>
+
+      <!-- Welcome Floating Glass Pill (larger, shifted 20% down on entry) -->
+      <div class="hero-status-pill" id="hero-status-pill">
+        <span class="scroll-indicator-dot"></span>
+        <span id="hero-scroll-status">Welcome to Olbrite... Scroll to Enter</span>
+      </div>
+
+      <!-- Hero Left Foreground Content (staggered reveal on loop) -->
+      <div class="hero-content">
+        <div class="hero-left-column">
+          
+          <div class="hero-badge hero-reveal-item" id="hero-badge-tag">
+            <span class="pulse-dot"></span>
+            CONVERSATIONS POWER GROWTH
+          </div>
+
+          <!-- Dynamic Main Title with Olbrite Gradient & Subtle Animated Messages -->
+          <h1 class="hero-title hero-reveal-item" id="hero-main-title">
+            <span class="title-rotating-line" id="title-rotating-line">What can we do for you?</span>
+          </h1>
+
+          <p class="hero-subtitle hero-reveal-item" id="hero-main-subtitle">
+            AI agents, CRM and automation that turn every conversation into growth. Unify WhatsApp, Instagram, Messenger, SMS and more with intelligent assistants that qualify leads, follow up instantly and scale your revenue.
+          </p>
+
+          <div class="hero-cta-group hero-reveal-item" id="hero-main-cta">
+            <a href="#demo" class="btn-primary">
+              <span>Book a demo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            
+            <button class="btn-secondary" id="btn-play-demo" aria-label="Ver demostración en video">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>See how it works</span>
+            </button>
+          </div>
+
+          <!-- Social Proof (Reveals after primary texts) -->
+          <div class="hero-social-proof" id="hero-social-proof">
+            <div class="avatar-group">
+              <span class="avatar-placeholder">🤖</span>
+              <span class="avatar-placeholder">👩‍💼</span>
+              <span class="avatar-placeholder">👨‍💻</span>
+              <span class="avatar-placeholder">+2K</span>
+            </div>
+            <div class="social-proof-text">
+              <strong>Trusted by 2,000+ businesses</strong><br>
+              From ambitious startups to global fast-growing brands.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Feature Ribbon (Slides up with fade in) -->
+      <div class="hero-features-ribbon" id="hero-features-ribbon">
+        <div class="ribbon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span>24/7 AI follow-up</span>
+        </div>
+        <div class="ribbon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Omnichannel conversations</span>
+        </div>
+        <div class="ribbon-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>Turn conversations into revenue</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Body Content -->
+  <main>
+    
+    <!-- Core Solution Section -->
+    <section class="section" id="core-solution">
+      <div class="section-header">
+        <span class="section-tag">The Core Solution</span>
+        <h2 class="section-title">Unified Visibility Across Every Touchpoint</h2>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h3>Unified Inbox</h3>
+          <p>Bring WhatsApp, Instagram DMs, Messenger, SMS, and email into one coherent timeline. Never lose context or let a lead go cold.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Predictive Lead Scoring</h3>
+          <p>Real-time conversational sentiment analysis prioritizes leads ready to purchase, alerting your closers at the exact golden minute.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <h3>Performance Analytics</h3>
+          <p>Holographic visibility into agent resolution speed, pipeline velocity, team quotas and multichannel attribution ROI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Measurable Impact / Real Results -->
+    <section class="section" id="results">
+      <div class="section-header">
+        <span class="section-tag">Measurable Impact</span>
+        <h2 class="section-title">Proven Results That Drive Bottom-Line Scale</h2>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">↑ 175%</div>
+          <div class="stat-label">Inbound Sales Growth</div>
+          <p class="stat-quote">"Olbrite doubled our qualified pipeline within 60 days without adding extra headcount."</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">↑ 80%</div>
+          <div class="stat-label">Faster First Response</div>
+          <p class="stat-quote">"Our initial response time dropped from 45 minutes to 18 seconds across all channels."</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">↑ 60%</div>
+          <div class="stat-label">Meeting Booking Rate</div>
+          <p class="stat-quote">"The 3D AI assistant qualifies prospects seamlessly and books them right on our calendar."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Tailored Solutions -->
+    <section class="section" id="industry">
+      <div class="section-header">
+        <span class="section-tag">Tailored Architecture</span>
+        <h2 class="section-title">Built for Modern Verticals</h2>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3>E-Commerce & Retail</h3>
+          <p>Instant order tracking, product recommendations, cart abandonment recovery and 24/7 customer support on WhatsApp.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Real Estate & Property</h3>
+          <p>Instant property matching, automated viewing appointments, and continuous prospect nurture with high touch personal feel.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          </div>
+          <h3>B2B SaaS & Tech</h3>
+          <p>Instant inbound demo scheduling, automated lead enrichment, CRM sync and intelligent outbound reactivation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final High-Conversion CTA Banner -->
+    <section class="section" id="contact">
+      <div class="cta-banner">
+        <div class="cta-banner-content">
+          <h2>Ready to power your growth?</h2>
+          <p>Empower your team with intelligent AI agents that work alongside you 24/7. Get your free personalized demo today.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#demo" class="btn-primary" style="background: #ffffff; color: var(--primary);">Get Started for Free</a>
+            <a href="#demo" class="btn-secondary" style="background: rgba(255,255,255,0.1); color: #ffffff; border-color: rgba(255,255,255,0.3);">Book a Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <a href="#" class="brand-logo">
+        <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo" style="height: 32px;">
+      </a>
+      
+      <div class="footer-copy">
+        &copy; 2026 Olbrite Inc. All rights reserved. Powered by here.now.
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Entry Script -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
