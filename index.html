@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.4">
+  <link rel="stylesheet" href="css/style.css?v=2.5">
 </head>
 <body class="light-theme hero-locked">
 
@@ -146,6 +146,28 @@
           <span>Turn conversations into revenue</span>
         </div>
       </div>
+
+      <!-- Mindy AI Concierge Avatar (Welcoming presenter) -->
+      <aside class="mindy-avatar-container" id="mindy-avatar-container" aria-label="Mindy AI Concierge">
+        <div class="mindy-speech-bubble" id="mindy-speech-bubble">
+          <div class="mindy-bubble-badge">
+            <span class="mindy-online-dot"></span>
+            <span>Mindy • AI Concierge</span>
+          </div>
+          <p class="mindy-bubble-text">Hi! Welcome to Olbrite ✨</p>
+        </div>
+        <div class="mindy-video-wrapper">
+          <video 
+            id="mindy-avatar-video" 
+            class="mindy-avatar-video" 
+            playsinline 
+            muted 
+            preload="auto">
+            <source src="assets/videos/mindy-avatar-welcome.webm" type="video/webm">
+            <source src="assets/videos/mindy-avatar-welcome-safari.mp4" type="video/mp4; codecs=hvc1">
+          </video>
+        </div>
+      </aside>
 
     </div>
   </div>
@@ -487,6 +509,6 @@
   </footer>
 
   <!-- App Entry Script -->
-  <script type="module" src="js/main.js?v=2.4"></script>
+  <script type="module" src="js/main.js?v=2.5"></script>
 </body>
 </html>

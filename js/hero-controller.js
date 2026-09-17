@@ -46,6 +46,12 @@ export class HeroController {
     this.socialProof = document.querySelector('#hero-social-proof');
     this.featuresRibbon = document.querySelector('#hero-features-ribbon');
 
+    // Mindy AI Concierge Avatar elements
+    this.mindyContainer = document.querySelector(options.mindyContainer || '#mindy-avatar-container');
+    this.mindyVideo = document.querySelector(options.mindyVideo || '#mindy-avatar-video');
+    this.mindyBubble = document.querySelector(options.mindyBubble || '#mindy-speech-bubble');
+    this.mindyHasTriggered = false;
+
     this.totalFrames = options.totalFrames || 80;
     this.framePrefix = options.framePrefix || 'assets/hero-frames/frame_';
     this.frameExt = options.frameExt || '.jpg';
@@ -217,6 +223,15 @@ export class HeroController {
     this.hasTriggeredAutoPlay = true;
     this.isPlayingSequence = true;
 
+    // Preload Mindy AI presenter video buffers immediately
+    if (this.mindyVideo) {
+      try {
+        this.mindyVideo.load();
+      } catch (e) {
+        // Safe failover
+      }
+    }
+
     // 1. Part open the frosted glass doors
     if (this.glassDoors) {
       this.glassDoors.classList.add('opened');
@@ -340,6 +355,74 @@ export class HeroController {
     setTimeout(() => {
       this.startTitleRotation();
     }, 3800);
+
+    // 10. Present Mindy AI Concierge once the hero and loop are running
+    setTimeout(() => {
+      this.triggerMindyPresenter();
+    }, 400);
+  }
+
+  triggerMindyPresenter() {
+    if (!this.mindyContainer || !this.mindyVideo || this.mindyHasTriggered) return;
+    this.mindyHasTriggered = true;
+
+    // Reset initial visual state
+    this.mindyContainer.classList.remove('exit');
+    this.mindyContainer.classList.add('active');
+    this.mindyContainer.setAttribute('aria-hidden', 'false');
+
+    // Reproduce video with muted playsinline for 100% native mobile & desktop autoplay
+    this.mindyVideo.muted = true;
+    this.mindyVideo.currentTime = 0;
+    const playPromise = this.mindyVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.warn('Mindy autoplay notice:', err);
+      });
+    }
+
+    // Reveal glassmorphism speech bubble
+    setTimeout(() => {
+      if (this.mindyBubble) {
+        this.mindyBubble.classList.add('bubble-visible');
+      }
+    }, 950);
+
+    // Fade out speech bubble
+    setTimeout(() => {
+      if (this.mindyBubble) {
+        this.mindyBubble.classList.remove('bubble-visible');
+      }
+    }, 5200);
+
+    // Exit animation: "hacerse pequeño hacia la esquina derecha inferior y desaparecer con un fade"
+    let exitTriggered = false;
+    const handleExit = () => {
+      if (exitTriggered) return;
+      exitTriggered = true;
+
+      if (this.mindyBubble) {
+        this.mindyBubble.classList.remove('bubble-visible');
+      }
+
+      this.mindyContainer.classList.remove('active');
+      this.mindyContainer.classList.add('exit');
+
+      // Clear from rendering tree once exit animation finishes
+      setTimeout(() => {
+        if (this.mindyContainer) {
+          this.mindyContainer.style.display = 'none';
+        }
+      }, 950);
+    };
+
+    // Listen to video ended event
+    this.mindyVideo.addEventListener('ended', handleExit, { once: true });
+
+    // Safety fallback (video is 8.0s) in case mobile browser suppresses ended event
+    setTimeout(() => {
+      handleExit();
+    }, 8400);
   }
 
   startTitleRotation() {

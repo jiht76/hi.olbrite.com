@@ -732,6 +732,128 @@ body.hero-locked {
 }
 
 /* ==========================================================================
+   Mindy AI Concierge Avatar Presenter (Bottom Right)
+   ========================================================================== */
+.mindy-avatar-container {
+  position: absolute;
+  bottom: 0;
+  right: clamp(1.5rem, 4.5vw, 5rem);
+  z-index: 18;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: bottom right;
+  transform: translate3d(40px, 30px, 0) scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  will-change: transform, opacity, filter;
+}
+
+.mindy-avatar-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Salida requerida: "hacerse pequeño hacia la esquina derecha inferior y desaparecer con un fade" */
+.mindy-avatar-container.exit {
+  transform-origin: bottom right;
+  transform: translate3d(60px, 60px, 0) scale(0.04);
+  opacity: 0;
+  filter: blur(10px);
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.75s ease, filter 0.75s ease;
+  pointer-events: none;
+}
+
+.mindy-video-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: clamp(380px, 50vh, 560px);
+  width: auto;
+  aspect-ratio: 720 / 1280;
+  filter: drop-shadow(0 14px 28px rgba(26, 16, 63, 0.12)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+}
+
+.mindy-avatar-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  background: transparent;
+}
+
+/* Glassmorphism Speech Bubble */
+.mindy-speech-bubble {
+  position: relative;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(117, 75, 231, 0.22);
+  border-radius: 16px 16px 4px 16px;
+  padding: 0.65rem 1.15rem;
+  box-shadow: 0 10px 28px rgba(117, 75, 231, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  transform-origin: bottom right;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.mindy-speech-bubble.bubble-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: mindyBubbleFloat 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes mindyBubbleFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.mindy-bubble-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #754be7;
+  margin-bottom: 0.2rem;
+}
+
+.mindy-online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  animation: mindyPulse 2s infinite;
+}
+
+@keyframes mindyPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.mindy-bubble-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
    Integrations & Compatibility Slider Section ("Our agents can work with...")
    ========================================================================== */
 .integrations-section {
@@ -1345,5 +1467,40 @@ body.hero-locked {
 
   .cta-banner {
     padding: 2.5rem 1.5rem;
+  }
+
+  /* Mindy AI Concierge Mobile Placement & Scaling */
+  .mindy-avatar-container {
+    right: 0.15rem;
+    bottom: 0;
+    max-width: 42vw;
+    z-index: 18;
+  }
+
+  .mindy-video-wrapper {
+    height: clamp(190px, 27vh, 240px);
+  }
+
+  .mindy-speech-bubble {
+    padding: 0.35rem 0.65rem;
+    margin-bottom: 0.25rem;
+    border-radius: 12px 12px 2px 12px;
+    align-self: flex-end;
+    margin-right: 0.25rem;
+  }
+
+  .mindy-bubble-badge {
+    font-size: 0.58rem;
+    margin-bottom: 0.1rem;
+    gap: 0.3rem;
+  }
+
+  .mindy-online-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .mindy-bubble-text {
+    font-size: 0.74rem;
   }
 }
