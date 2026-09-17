@@ -57,7 +57,23 @@
    - Se generaron versiones de alta definición del isotipo translúcido (`assets/branding/favicon-glass.png`, `favicon-glass-32.png`, `favicon-glass-48.png`, `apple-touch-icon-glass.png`, etc.) a partir de `assets/isotipo-glass-transparent.png`.
    - Configurado en `<head>` con múltiples resoluciones (32x32, 48x48, 64x64) y Apple Touch Icon (180x180), además de los fallbacks de raíz `favicon.ico` y `favicon.png`.
 
-### E. Optimización Móvil y Jerarquía Vertical
+### E. Slider de Integraciones ("Our agents can work with...")
+1. **Descarga Automatizada de Vectores Oficiales (WorldVectorLogo)**:
+   - Utilizando la herramienta CLI del skill `worldvectorlogo` (`wvl.py`), se consultaron y descargaron directamente los 20 logotipos vectoriales oficiales en formato SVG optimizado en `assets/logos/`:
+     - *Modelos de IA*: OpenAI, Anthropic, Google Gemini, DeepSeek.
+     - *Canales y Redes Sociales*: WhatsApp, Telegram, Slack, Meta, Instagram, Facebook, TikTok.
+     - *Plataformas y CRMs*: WordPress, Shopify, HubSpot, Jira, Twilio.
+     - *Productividad*: Google Calendar, Gmail, Google Drive, Calendly.
+2. **Carrusel Bidireccional Infinito (Marquee Doble)**:
+   - **Fila 1 (Izquierda a Derecha)**: Modelos de IA y Mensajería + distintivo destacado `"✨ And hundreds of tools"`.
+   - **Fila 2 (Derecha a Izquierda)**: CRMs, Comercio y Productividad + distintivo destacado `"🚀 And hundreds of tools"`.
+   - Implementado mediante `translate3d` continuo con duplicación de sets para rotación infinita sin saltos visuales (`36s` y `40s`).
+   - Máscara de desvanecimiento lateral en bordes con CSS `mask-image` y `-webkit-mask-image`.
+   - Pausa suave al pasar el cursor (`:hover { animation-play-state: paused; }`).
+3. **Píldoras Glassmorphism de Alta Fidelidad**:
+   - Cada herramienta se presenta en una píldora translúcida con icono SVG nítido y tipografía seminegrilla con micro-animaciones en hover (`translateY(-3px)`, resplandor violeta Olbrite).
+
+### F. Optimización Móvil y Jerarquía Vertical
 1. **Distribución Vertical Ergonómica en el Hero**:
    - **Badge "All Agents Active!"**: Desplazado a `top: 6.4rem` con respiro adecuado frente al Navbar.
    - **Frase Dinámica**: Elevada hacia la zona superior-media para dejar despejado el rostro de los avatares.
@@ -69,7 +85,7 @@
 4. **Header Compacto**:
    - Navbar optimizado en móvil para maximizar el área visible.
 
-### F. Hallazgos en el Despliegue con here.now
+### G. Hallazgos en el Despliegue con here.now
 1. **Diferencia entre Deploy Personal y Workspace**:
    - Al publicar con `--workspace olbrite`, el sitio se asocia a la cuenta corporativa y vincula directamente las rutas del subdominio configurado (`hi.olbrite.com` -> `gilded-mortar-r7an`).
 2. **Uso de `--slug` y `--overwrite`**:
@@ -77,7 +93,7 @@
      ```bash
      ~/.agents/skills/here-now/scripts/publish.sh dist --slug gilded-mortar-r7an --workspace olbrite --overwrite --client gemini
      ```
-   - Solo se transfieren archivos modificados (HTML, CSS, JS) en menos de 5 segundos gracias a las sumas SHA-256 de here.now.
+   - Solo se transfieren archivos modificados (HTML, CSS, JS, SVGs) en menos de 5 segundos gracias a las sumas SHA-256 de here.now.
 
 ---
 
@@ -86,10 +102,9 @@
 ```text
 hi.olbrite.com/
 ├── assets/
-│   ├── branding/
-│   │   ├── olbrite-logo-horizontal-white-background.png  # Logo original HD
-│   │   └── olbrite-logo-transparent.png                 # Logo vectorizado con transparencia
+│   ├── branding/                                        # Logos principales y favicons glass
 │   ├── hero-frames/                                     # 80 cuadros HD (frame_001.jpg a frame_080.jpg)
+│   ├── logos/                                           # 20 SVGs oficiales de integración (wvl.py)
 │   └── videos/
 │       ├── hero-video-start.mp4                         # Video 1: Secuencia de arranque/oficina
 │       └── hero-video-loop-hd.mp4                       # Video 2: Loop ambient HD en pantallas holográficas
