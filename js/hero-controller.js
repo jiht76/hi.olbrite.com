@@ -372,7 +372,7 @@ export class HeroController {
       const scale = Math.max(cw / iw, ch / ih);
       const nw = iw * scale;
       const nh = ih * scale;
-      const ox = (cw - nw) * 0.82;
+      const ox = (cw - nw) * 0.5;
       const oy = (ch - nh) * 0.5;
 
       this.ctx.drawImage(img, ox, oy, nw, nh);
