@@ -7,7 +7,10 @@
   <meta name="description" content="AI agents, CRM and automation that turn every conversation into growth.">
   
   <!-- Favicon / Branding -->
-  <link rel="icon" type="image/png" href="assets/branding/olbrite-logo-transparent.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-glass-32.png?v=2.3">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/branding/favicon-glass-48.png?v=2.3">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/branding/favicon-glass.png?v=2.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon-glass.png?v=2.3">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=2.3">
 </head>
 <body class="light-theme hero-locked">
 
@@ -66,14 +69,18 @@
         
         <!-- Glass Doors Effect: Frost blur with central vertical seam that parts open on entry -->
         <div class="glass-door-container" id="glass-doors">
-          <div class="glass-door-leaf glass-door-left"></div>
+          <div class="glass-door-leaf glass-door-left">
+            <div class="glass-engraving glass-engraving-left">
+              <img src="assets/isotipo-glass-transparent.png" alt="Olbrite Mark" class="engraved-mark">
+              <img src="assets/olbrite-logo-glass-transparent.png" alt="Olbrite Logo" class="engraved-logo">
+            </div>
+          </div>
           <div class="glass-door-seam"></div>
-          <div class="glass-door-leaf glass-door-right"></div>
-
-          <!-- Engraved Glass Branding (Isotipo & Logo grabado al 50% transparencia y bajo contraste) -->
-          <div class="glass-engraving" id="glass-engraving" style="position: absolute; top: 38%; left: 50%; transform: translate(-50%, -50%); z-index: 7; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; pointer-events: none; opacity: 0.5; filter: contrast(0.85) brightness(1.05);">
-            <img src="assets/isotipo-glass-transparent.png" alt="Olbrite Mark" class="engraved-mark" width="56" height="56" style="width: 56px; height: 56px; object-fit: contain; display: block;">
-            <img src="assets/olbrite-logo-glass-transparent.png" alt="Olbrite Logo" class="engraved-logo" width="140" height="47" style="width: 140px; height: auto; object-fit: contain; display: block;">
+          <div class="glass-door-leaf glass-door-right">
+            <div class="glass-engraving glass-engraving-right">
+              <img src="assets/isotipo-glass-transparent.png" alt="Olbrite Mark" class="engraved-mark">
+              <img src="assets/olbrite-logo-glass-transparent.png" alt="Olbrite Logo" class="engraved-logo">
+            </div>
           </div>
         </div>
 
@@ -272,6 +279,6 @@
   </footer>
 
   <!-- App Entry Script -->
-  <script type="module" src="js/main.js?v=2.2"></script>
+  <script type="module" src="js/main.js?v=2.3"></script>
 </body>
 </html>

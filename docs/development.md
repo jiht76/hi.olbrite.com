@@ -24,52 +24,60 @@
    - Una vez finalizados los 80 frames, el canvas transiciona suavemente mediante opacidad hacia `assets/videos/hero-video-loop-hd.mp4` (`autoplay`, `loop`, `muted`, `playsinline`), el cual permanece activo indefinidamente incluso si el usuario vuelve a desplazarse hacia arriba (*efecto permanente*).
 
 ### B. Experiencia de Entrada ("Glass Doors" & Welcome Flow)
-1. **Efecto Puerta de Vidrio (Frosted Glass Doors)**:
-   - Al cargar la página, el espacio de trabajo se encuentra cubierto por dos hojas de vidrio esmerilado (`backdrop-filter: blur(28px)`) separadas por una junta luminosa vertical en el centro.
-2. **Grabado de Marca en Cristal (Glass Engraving)**:
-   - En el estado inicial previo a la apertura, se muestra el isotipo (`assets/isotipo-glass-transparent.png`) y el logotipo (`assets/olbrite-logo-glass-transparent.png`) con efecto de grabado en el vidrio: **50% de opacidad**, bajo contraste y tamaño compacto y elegante.
-   - Al tocar o hacer clic para entrar, el grabado se desvanece de manera sutil y fluida a medida que las puertas se abren hacia los laterales.
-3. **Mecanismo de Activación por Touch / Click (No Scroll)**:
+1. **Efecto Puerta de Vidrio Doble (Frosted Glass Doors)**:
+   - Al cargar la página, el espacio de trabajo se encuentra cubierto por dos hojas de vidrio esmerilado independientes (`.glass-door-left` y `.glass-door-right`) con `backdrop-filter: blur(28px)` separadas por una junta luminosa vertical en el centro.
+2. **Grabado de Marca en Cada Mitad (Dual Glass Engraving)**:
+   - En el estado inicial previo a la apertura, **cada hoja de vidrio** contiene su propio grabado centrado con el isotipo (`assets/isotipo-glass-transparent.png`) y el logotipo (`assets/olbrite-logo-glass-transparent.png`):
+     - **Escritorio**: Tamaño 50% mayor (isotipo 84px, logo 210px) para presencia nítida y elegante.
+     - **Móvil**: Proporciones compactas y refinadas (isotipo 46px, logo 115px).
+     - **Tratamiento**: 50% de transparencia (`opacity: 0.5`) y contraste atenuado (`filter: contrast(0.85) brightness(1.05)`).
+3. **Apertura y Desvanecimiento Direccional (Lateral Dissolve)**:
+   - Al pulsar para entrar, la puerta izquierda y su grabado se desplazan y desvanecen hacia la izquierda (`translateX(-100%)` / `translate(-80%, -50%)`), y la puerta derecha hacia la derecha (`translateX(100%)` / `translate(-20%, -50%)`).
+   - Al concluir la transición (1.2s), el contenedor se oculta por completo (`display: none; visibility: hidden; pointer-events: none;`) para garantizar que no permanezca ninguna capa sobre el canvas ni el video.
+4. **Mecanismo de Activación por Touch / Click (No Scroll)**:
    - Para prevenir que el usuario haga scroll antes de cargar los cuadros o salte la cinemática, el scroll está bloqueado inicialmente (`body.hero-locked`).
-   - El gatillo de entrada ahora es exclusivamente táctil o clic (en la píldora, las puertas o el canvas).
-   - Una vez finalizada la transformación al loop, se desbloquea el scroll del cuerpo (`hero-unlocked`) para permitir explorar el resto de la página libremente.
-4. **Detección Dinámica de Dispositivo**:
-   - Dispositivos táctiles (móvil/tablet): `Welcome!... Touch to enter`.
-   - Dispositivos de escritorio: `Welcome!... Click to enter`.
-   - Animación de pulsación luminosa (`ready`) tan pronto como el primer cuadro está disponible en memoria.
-5. **Secuencia Narrativa de Textos**:
-   - **Al pulsar para entrar**: Las puertas se abren hacia los lados y el badge actualiza a: `Our Agents are Working!` seguido de `Please get in ✨`.
+   - El gatillo de entrada es exclusivamente táctil o clic (en la píldora, las puertas o el canvas).
+   - Detección dinámica de dispositivo: `Welcome!... Touch to enter` en móviles / tablets y `Welcome!... Click to enter` en escritorios.
+5. **Secuencia Narrativa de Textos y Transición al Loop**:
+   - **Al pulsar para entrar**: `Our Agents are Working!` seguido de `Please get in ✨`.
    - **Al llegar al Loop**:
-     - El badge se ancla como tag a la izquierda arriba del título: `✨ All Agents Active!`.
-     - El título principal H1 entra con el gradiente corporativo Olbrite: `What can we do for you?`.
-     - Espaciado vertical ampliado generosamente hacia los botones CTA para evitar solapamientos y dar gran balance visual.
-     - Rota cada 3.8 segundos por la lista de propuestas de valor y automatización.
+     - El badge se ancla arriba del título: `✨ All Agents Active!`.
+     - En **desktop**, el badge anclado se alinea de forma **pixel-perfect al margen izquierdo** (`left: calc(max(2rem, (100% - 1280px) / 2 + 2rem)); transform: none !important; animation: none !important;`), coincidiendo al 100% (diferencia 0px) con el título `What can we do for you?` y los botones.
+     - El título principal H1 entra con el gradiente corporativo Olbrite y rota cada 3.8s por la lista de propuestas de valor y automatización.
      - Social Proof: `Over 500 agents and projects`.
 
-### C. Optimización Móvil y Jerarquía Vertical
-1. **Distribución Vertical Ergonómica en el Hero**:
-   - **Badge "All Agents Active!"**: Desplazado un poco más abajo (`top: 6.4rem`) para otorgar respiro y separación adecuada frente al Navbar.
-   - **Frase Dinámica**: Elevada hacia la zona superior-media para ganar visibilidad inmediata y dejar despejado el rostro de los personajes del video.
-   - **Botones CTA y Social Proof**: Empujados hacia la parte inferior mediante `margin-top: auto`, ubicándose en la zona de fácil alcance para los pulgares del usuario y equilibrando visualmente el espacio inferior.
-2. **Menú Hamburguesa Sin Bordes**:
-   - Botón minimalista de 3 líneas limpias, sin bordes ni sombras que compitan con el header, animándose a "X" al abrir.
-3. **Acordeón Edge-to-Edge Sin Cortes ni Espacios Vacíos**:
-   - El cajón se extiende de borde a borde (`left: -1.25rem; width: calc(100% + 2.5rem)`), integrándose perfectamente con el Navbar.
-   - Totalmente oculto (`max-height: 0`, `visibility: hidden`, `border: none`) al estar cerrado para eliminar líneas o espacios blancos flotantes.
-   - Altura máxima y paddings calibrados para que el botón final ("Book a demo") sea 100% visible sin cortes y sin generar vacíos blancos excesivos abajo.
-4. **Header Compacto**:
-   - Se redujo la altura y paddings del Navbar en móvil para maximizar el área visible del video y los avatares.
+### C. Eliminación de Demora en Scroll Down
+1. **Contenedor 100vh**:
+   - Inicialmente, `.hero-scroll-container` requería `240vh` para el scrubbing manual por scroll. Con el modelo cinemático por touch/clic, dicha altura generaba una demora de 140vh de scroll muerto antes de que el hero se desplazara hacia arriba.
+   - Se ajustó `.hero-scroll-container` y `.hero-scroll-container.unlocked` a `height: 100vh; min-height: 100vh;`.
+   - Al estar desbloqueado el hero, cualquier desplazamiento del usuario hace avanzar inmediatamente la página hacia la sección `#core-solution` con fluidez instantánea.
 
-### D. Hallazgos en el Despliegue con here.now
+### D. Favicon e Identidad de Marca Glass
+1. **Favicon Isotipo Glass Transparente**:
+   - Se generaron versiones de alta definición del isotipo translúcido (`assets/branding/favicon-glass.png`, `favicon-glass-32.png`, `favicon-glass-48.png`, `apple-touch-icon-glass.png`, etc.) a partir de `assets/isotipo-glass-transparent.png`.
+   - Configurado en `<head>` con múltiples resoluciones (32x32, 48x48, 64x64) y Apple Touch Icon (180x180), además de los fallbacks de raíz `favicon.ico` y `favicon.png`.
+
+### E. Optimización Móvil y Jerarquía Vertical
+1. **Distribución Vertical Ergonómica en el Hero**:
+   - **Badge "All Agents Active!"**: Desplazado a `top: 6.4rem` con respiro adecuado frente al Navbar.
+   - **Frase Dinámica**: Elevada hacia la zona superior-media para dejar despejado el rostro de los avatares.
+   - **Botones CTA y Social Proof**: Alineados abajo para ergonomía de pulgar.
+2. **Menú Hamburguesa Sin Bordes**:
+   - Botón minimalista de 3 líneas limpias, sin bordes ni fondos que compitan con el header.
+3. **Acordeón Edge-to-Edge Sin Cortes ni Espacios Vacíos**:
+   - Despliegue limpio sin marcos flotantes ni cortes en el botón "Book a demo".
+4. **Header Compacto**:
+   - Navbar optimizado en móvil para maximizar el área visible.
+
+### F. Hallazgos en el Despliegue con here.now
 1. **Diferencia entre Deploy Personal y Workspace**:
-   - Al publicar con `--workspace olbrite`, el sitio se asocia a la cuenta de equipo corporativa y vincula directamente las rutas de subdominio configuradas (`hi.olbrite.com` -> `gilded-mortar-r7an`).
-   - Si no se especifica `--workspace`, here.now genera un sitio individual bajo la cuenta del usuario (`timber-mortar-83k8.here.now`).
+   - Al publicar con `--workspace olbrite`, el sitio se asocia a la cuenta corporativa y vincula directamente las rutas del subdominio configurado (`hi.olbrite.com` -> `gilded-mortar-r7an`).
 2. **Uso de `--slug` y `--overwrite`**:
-   - Para actualizar la versión ya vinculada a `hi.olbrite.com` sin romper el dominio ni re-subir todos los videos completos, el comando exacto es:
+   - Para actualizar la versión ya vinculada a `hi.olbrite.com` sin romper el dominio ni re-subir todos los videos completos:
      ```bash
      ~/.agents/skills/here-now/scripts/publish.sh dist --slug gilded-mortar-r7an --workspace olbrite --overwrite --client gemini
      ```
-   - Gracias al cálculo de hashes SHA-256 de here.now, los 85 archivos multimedia sin cambios se omiten (*skipped*) y solo se transfieren los archivos modificados (HTML, CSS, JS) en menos de 5 segundos.
+   - Solo se transfieren archivos modificados (HTML, CSS, JS) en menos de 5 segundos gracias a las sumas SHA-256 de here.now.
 
 ---
 

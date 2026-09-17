@@ -82,6 +82,11 @@ export class HeroController {
   }
 
   init() {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     // Set initial welcome prompt immediately
     if (this.promptText) {
       this.promptText.textContent = this.welcomeText;
@@ -215,6 +220,11 @@ export class HeroController {
     // 1. Part open the frosted glass doors
     if (this.glassDoors) {
       this.glassDoors.classList.add('opened');
+      setTimeout(() => {
+        if (this.glassDoors) {
+          this.glassDoors.style.display = 'none';
+        }
+      }, 1250);
     }
 
     // 2. Progression: 'Our Agents are Working!' -> 'Please get in'
@@ -285,7 +295,7 @@ export class HeroController {
 
     // 3. Dock Center Status Pill to the left
     if (this.statusPill) {
-      this.statusPill.classList.remove('animating');
+      this.statusPill.classList.remove('animating', 'ready');
       this.statusPill.classList.add('docked');
     }
 
