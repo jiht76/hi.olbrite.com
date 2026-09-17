@@ -1,4 +1,4 @@
-import { HeroController } from './hero-controller.js?v=2.5';
+import { HeroController } from './hero-controller.js?v=2.6';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Interactive Hero Stage

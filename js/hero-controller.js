@@ -50,6 +50,7 @@ export class HeroController {
     this.mindyContainer = document.querySelector(options.mindyContainer || '#mindy-avatar-container');
     this.mindyVideo = document.querySelector(options.mindyVideo || '#mindy-avatar-video');
     this.mindyBubble = document.querySelector(options.mindyBubble || '#mindy-speech-bubble');
+    this.mindySoundToggle = document.querySelector(options.mindySoundToggle || '#mindy-sound-toggle');
     this.mindyHasTriggered = false;
 
     this.totalFrames = options.totalFrames || 80;
@@ -106,6 +107,9 @@ export class HeroController {
 
     // Attach click and touch triggers
     this.setupTriggerListeners();
+
+    // Setup Mindy sound controls
+    this.setupMindySoundControls();
 
     // Priority load frame 1, then progressively preload remainder
     this.loadFirstFrameAndPreloadRemaining();
@@ -184,6 +188,22 @@ export class HeroController {
       if (e && e.cancelable && e.type !== 'click') {
         e.preventDefault();
       }
+
+      // Unlock audio permission while user gesture is active
+      if (this.mindyVideo) {
+        try {
+          this.mindyVideo.muted = false;
+          this.mindyVideo.volume = 1.0;
+          const warmup = this.mindyVideo.play();
+          if (warmup !== undefined) {
+            warmup.then(() => {
+              this.mindyVideo.pause();
+              this.mindyVideo.currentTime = 0;
+            }).catch(() => {});
+          }
+        } catch (err) {}
+      }
+
       this.startCinematicTransformation();
     };
 
@@ -371,13 +391,20 @@ export class HeroController {
     this.mindyContainer.classList.add('active');
     this.mindyContainer.setAttribute('aria-hidden', 'false');
 
-    // Reproduce video with muted playsinline for 100% native mobile & desktop autoplay
-    this.mindyVideo.muted = true;
+    // Reproduce video with sound enabled (volume 1.0)
+    this.mindyVideo.muted = false;
+    this.mindyVideo.volume = 1.0;
     this.mindyVideo.currentTime = 0;
+
     const playPromise = this.mindyVideo.play();
     if (playPromise !== undefined) {
-      playPromise.catch((err) => {
-        console.warn('Mindy autoplay notice:', err);
+      playPromise.then(() => {
+        this.updateMindySoundUI(true);
+      }).catch((err) => {
+        console.warn('Playback with audio prevented by policy, trying muted fallback:', err);
+        this.mindyVideo.muted = true;
+        this.mindyVideo.play().catch(() => {});
+        this.updateMindySoundUI(false);
       });
     }
 
@@ -423,6 +450,31 @@ export class HeroController {
     setTimeout(() => {
       handleExit();
     }, 8400);
+  }
+
+  setupMindySoundControls() {
+    if (!this.mindySoundToggle) return;
+    this.mindySoundToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!this.mindyVideo) return;
+      this.mindyVideo.muted = !this.mindyVideo.muted;
+      if (!this.mindyVideo.muted) {
+        this.mindyVideo.volume = 1.0;
+        this.mindyVideo.play().catch(() => {});
+      }
+      this.updateMindySoundUI(!this.mindyVideo.muted);
+    });
+  }
+
+  updateMindySoundUI(hasSound) {
+    if (!this.mindySoundToggle) return;
+    const onIcon = this.mindySoundToggle.querySelector('.sound-icon-on');
+    const offIcon = this.mindySoundToggle.querySelector('.sound-icon-off');
+    if (onIcon && offIcon) {
+      onIcon.style.display = hasSound ? 'block' : 'none';
+      offIcon.style.display = hasSound ? 'none' : 'block';
+    }
+    this.mindySoundToggle.setAttribute('title', hasSound ? 'Silenciar audio' : 'Activar audio');
   }
 
   startTitleRotation() {
