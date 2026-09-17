@@ -435,11 +435,12 @@ export class HeroController {
       this.mindyContainer.classList.remove('active');
       this.mindyContainer.classList.add('exit');
 
-      // Clear from rendering tree once exit animation finishes
+      // Clear from rendering tree once exit animation finishes and spawn live chat widget
       setTimeout(() => {
         if (this.mindyContainer) {
           this.mindyContainer.style.display = 'none';
         }
+        this.loadLiveChatWidget();
       }, 950);
     };
 
@@ -450,6 +451,18 @@ export class HeroController {
     setTimeout(() => {
       handleExit();
     }, 8400);
+  }
+
+  loadLiveChatWidget() {
+    if (document.getElementById('leadconnector-chat-widget')) return;
+
+    const script = document.createElement('script');
+    script.id = 'leadconnector-chat-widget';
+    script.src = 'https://widgets.leadconnectorhq.com/loader.js';
+    script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+    script.setAttribute('data-widget-id', '6aac49d1204f7932178f3c0e');
+    script.async = true;
+    document.body.appendChild(script);
   }
 
   setupMindySoundControls() {
