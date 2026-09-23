@@ -99,6 +99,53 @@
      ```
    - Solo se transfieren archivos modificados (HTML, CSS, JS, SVGs) en menos de 5 segundos gracias a las sumas SHA-256 de here.now.
 
+### H. Avatar Concierge Mindy & Widget de Chat LeadConnector
+1. **Integración de Video con Canal Alfa (WebM)**:
+   - Archivo: `assets/videos/mindy-avatar-welcome.webm`.
+   - Se activa de forma automática una vez completada la cinemática de entrada (`completeTransformation`).
+2. **Estrategia de Audio y Permisos del Navegador**:
+   - Los navegadores modernos bloquean la reproducción automática con sonido (*autoplay audio policy*).
+   - **Solución implementada**: Durante el gesto de clic/touch del usuario en las puertas o píldora central de entrada, se ejecuta un *warmup* inmediato (`video.play()` con volumen `1.0` y posterior `pause()`). Cuando la transformación culmina, Mindy saluda con audio nítido sin restricciones del navegador.
+   - Controles de sonido UI: Botón flotante accesible para silenciar (`mute`) o reactivar el sonido en cualquier momento.
+3. **Escala Móvil Aumentada (+60%)**:
+   - En pantallas pequeñas, el avatar se incrementó un 60% para brindar máxima presencia e impacto visual sin tapar los botones clave de acción.
+4. **Globo de Diálogo y Animación de Salida (Shrink-to-Corner)**:
+   - Se despliega un globo de texto con glassmorphism: *"Hi there! I'm Mindy... Welcome to Olbrite!"*.
+   - Al terminar el mensaje de saludo (~8s), el contenedor ejecuta una transición fluida encogiéndose hacia la esquina inferior derecha (`.exit`).
+5. **Carga Diferida del Widget de Chat LeadConnector**:
+   - Al finalizar la animación de salida de Mindy, se monta en el DOM el script oficial del widget de conversación de LeadConnector (`https://widgets.leadconnectorhq.com/loader.js` con widget ID `6aac49d1204f7932178f3c0e`). Esto asegura que el widget pesado no consuma recursos de renderizado durante la cinemática de entrada.
+
+### I. Explorador Interactivo de Arquitectura: "¿Qué es un Agente?"
+1. **Propósito Educativo y de Conversión**:
+   - `#what-is-an-agent`: Desmitifica qué es un agente autónomo frente a los chatbots rígidos tradicionales.
+2. **Los 5 Componentes Fundamentales**:
+   - **Model**: El motor de razonamiento y planificación adaptativa.
+   - **Skills**: Competencias especializadas de negocio (calificación de leads, análisis financiero, redacción).
+   - **Tools**: Integraciones bidireccionales con APIs (WhatsApp, Slack, CRMs, bases de datos).
+   - **Harness**: Reglas de negocio, seguridad, límites de marca y escalamiento humano.
+   - **Loops**: Ciclos de ejecución continua (Plan → Act → Evaluate → Learn).
+3. **Mecánica Interactiva Híbrida**:
+   - Píldoras superiores interactivas (`.comp-pill`) sincronizadas con *hotspots* sobre la ilustración del escritorio 3D (`.stage-hotspot`).
+   - Ciclo automático cada 4.8s que se desactiva suavemente tan pronto como el usuario interactúa manualmente con cualquier control.
+
+### J. Pilares de Credibilidad y Propuesta de Valor ("Why Choose Olbrite")
+1. **Estructura de Cuadrícula con Micro-interacciones**:
+   - `#why-choose`: Cuatro pilares de confianza empresarial:
+     - *Enterprise-Grade Security & Governance*.
+     - *Zero-Friction Omnichannel Integration*.
+     - *Continuous 24/7 Autonomous Operation*.
+     - *Measurable Business ROI & Conversion*.
+2. **Estilo Visual**:
+   - Píldoras de micro-tags, badges con métricas de alto contraste y tarjetas glassmorphism con elevación elástica al pasar el cursor.
+
+### K. Diagnóstico de Herramientas del Navegador y Protocolo CDP
+1. **Causa del Timeout en `open_browser_url` del Subagente**:
+   - El puerto `9222` de Chrome DevTools Protocol (CDP) puede entrar en colisión si existe un proceso Chrome previo en segundo plano escuchando en IPv6 mientras el navegador del usuario escucha en IPv4.
+   - Si quedan archivos de bloqueo (`SingletonLock`, `SingletonSocket`) en `~/.gemini/antigravity-browser-profile`, las llamadas nativas de navegación pueden esperar indefinidamente.
+   - **Resolución**: Limpiar procesos huérfanos (`kill -9 <PID>`) y eliminar `Singleton*`.
+2. **Uso de Servidores MCP Alternativos**:
+   - El servidor `chrome-devtools-mcp` permite interactuar directamente con la sesión activa vía CDP, realizar capturas de pantalla de alta fidelidad e inspeccionar mensajes de consola de forma instantánea.
+
 ---
 
 ## 3. Estructura Final del Proyecto
