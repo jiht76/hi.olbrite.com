@@ -45,6 +45,10 @@
      - En **desktop**, el badge anclado se alinea de forma **pixel-perfect al margen izquierdo** (`left: calc(max(2rem, (100% - 1280px) / 2 + 2rem)); transform: none !important; animation: none !important;`), coincidiendo al 100% (diferencia 0px) con el título `What can we do for you?` y los botones.
      - El título principal H1 entra con el gradiente corporativo Olbrite y rota cada 3.8s por la lista de propuestas de valor y automatización.
      - Social Proof: `Over 500 agents and projects`.
+6. **Modo Auxiliar de Pruebas e Inspección (`?intro=off`)**:
+   - Permite cargar el sitio directamente en su estado activo/desbloqueado sin puertas de vidrio, sin bloqueo de scroll y sin tener que esperar la animación inicial de 80 cuadros o el video de Mindy.
+   - Activación vía parámetro de URL: `https://hi.olbrite.com/?intro=off` (también acepta `intro=false`, `intro=0`, o `no-intro`).
+   - Cuenta con detección en `<head>` para evitar parpadeos visuales (FOUC), desbloqueo inmediato de scroll y montaje instantáneo del video loop y la navegación.
 
 ### C. Eliminación de Demora en Scroll Down
 1. **Contenedor 100vh**:

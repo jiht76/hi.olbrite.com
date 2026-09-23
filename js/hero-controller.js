@@ -83,12 +83,22 @@ export class HeroController {
     this.statementIndex = 0;
     this.rotationTimer = null;
 
+    // Check if intro animation should be skipped (?intro=off for development / inspection / testing)
+    const urlParams = new URLSearchParams(window.location.search);
+    const introVal = (urlParams.get('intro') || '').toLowerCase();
+    this.skipIntro = introVal === 'off' || introVal === 'false' || introVal === '0' || introVal === 'none' || introVal === 'skip' || urlParams.has('no-intro');
+
     if (this.canvas && this.ctx) {
       this.init();
     }
   }
 
   init() {
+    if (this.skipIntro) {
+      this.initWithoutIntro();
+      return;
+    }
+
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
@@ -113,6 +123,85 @@ export class HeroController {
 
     // Priority load frame 1, then progressively preload remainder
     this.loadFirstFrameAndPreloadRemaining();
+  }
+
+  initWithoutIntro() {
+    this.hasTriggeredAutoPlay = true;
+    this.isTransformationComplete = true;
+    this.isPlayingSequence = false;
+
+    // 1. Unlock page scroll immediately
+    document.body.classList.remove('hero-locked');
+    document.body.classList.add('hero-unlocked');
+    if (this.container) {
+      this.container.classList.add('unlocked');
+    }
+
+    // 2. Hide frosted glass doors immediately
+    if (this.glassDoors) {
+      this.glassDoors.classList.add('opened');
+      this.glassDoors.style.display = 'none';
+    }
+
+    // 3. Dock Center Status Pill to the left without transition delay
+    if (this.statusPill) {
+      this.statusPill.classList.remove('animating', 'ready');
+      this.statusPill.classList.add('docked');
+    }
+    if (this.promptText) {
+      this.promptText.innerHTML = '✨ All Agents Active!';
+    }
+
+    // 4. Activate Ambient Video Loop
+    if (this.videoLoop) {
+      this.videoLoop.play().catch(() => {});
+      this.videoLoop.classList.add('active');
+    }
+
+    // 5. Activate Media Contrast Overlay
+    if (this.mediaOverlay) {
+      this.mediaOverlay.classList.add('active');
+    }
+
+    // 6. Set Main Title
+    if (this.titleLine) {
+      this.titleLine.textContent = this.narrativeStatements[0];
+    }
+
+    // 7. Reveal all items immediately without staggered timeouts
+    this.revealItems.forEach((el) => el.classList.add('revealed'));
+    if (this.socialProof) {
+      this.socialProof.classList.add('revealed');
+    }
+    if (this.featuresRibbon) {
+      this.featuresRibbon.classList.add('revealed');
+    }
+    if (this.navbar) {
+      this.navbar.classList.add('visible');
+    }
+
+    // 8. Start narrative title rotation
+    this.startTitleRotation();
+
+    // 9. Hide Mindy concierge avatar and load live chat widget directly
+    if (this.mindyContainer) {
+      this.mindyContainer.style.display = 'none';
+    }
+    this.mindyHasTriggered = true;
+    this.loadLiveChatWidget();
+
+    // 10. Canvas setup with final frame (frame 80) fallback for seamless rendering
+    this.setupDimensions();
+    window.addEventListener('resize', () => this.setupDimensions(), { passive: true });
+    const finalImg = new Image();
+    const formatted = String(this.totalFrames).padStart(3, '0');
+    finalImg.src = `${this.framePrefix}${formatted}${this.frameExt}`;
+    finalImg.onload = () => {
+      this.images[this.totalFrames - 1] = finalImg;
+      this.renderFrame(this.totalFrames);
+    };
+
+    console.log('⚡ [Olbrite] Intro animation bypassed via ?intro=off');
   }
 
   setupDimensions() {

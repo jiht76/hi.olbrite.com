@@ -20,8 +20,21 @@
   <!-- Preconnect for Live Chat Widget -->
   <link rel="preconnect" href="https://widgets.leadconnectorhq.com">
 
+  <!-- Check for ?intro=off immediately to avoid flash of intro state -->
+  <script>
+    (function() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var v = (p.get('intro') || '').toLowerCase();
+        if (v === 'off' || v === 'false' || v === '0' || v === 'none' || v === 'skip' || p.has('no-intro')) {
+          document.documentElement.classList.add('intro-off');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.9">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body class="light-theme hero-locked">
 
@@ -935,6 +948,6 @@
   </footer>
 
   <!-- App Entry Script -->
-  <script type="module" src="js/main.js?v=2.9"></script>
+  <script type="module" src="js/main.js?v=3.0"></script>
 </body>
 </html>
