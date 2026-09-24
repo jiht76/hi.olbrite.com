@@ -142,7 +142,9 @@ El Hero cuenta con dos estados principales:
   - **Tarjeta Frontal**: Activa, sin desenfoque (`filter: blur(0px)`), elevada con resplandor violeta (`translate3d(0, 0, 75px)`).
   - **Tarjetas Laterales**: Al fondo con desenfoque de cámara (`filter: blur(2.5px)` y `opacity: 0.72`), rotadas en el eje Y (`rotateY(18deg)` / `rotateY(-18deg)`).
 - Rotación continua interpolada por GPU (sin reordenamiento abrupto de flexbox) y fórmula modular `((idx - currentIndex) % 3 + 3) % 3`.
-- Dimensiones compactas (470px de alto) pensadas para visibilidad completa en viewport sin recortes ni scroll muerto.
+- **Transición cinematográfica 15% más lenta** (`0.86s` con `cubic-bezier(0.16, 1, 0.3, 1)`).
+- **Tarjetas suspendidas en el aire**: Sin plataforma/pedestal inferior y sin botones CTA internos para máxima limpieza y visibilidad.
+- **Dimensiones ultra compactas** (425px de alto) pensadas para visibilidad completa en viewport sin recortes ni scroll muerto.
 - Navegación múltiple: Flechas circulares prev/next, dots interactivos y clic directo sobre las tarjetas laterales para traerlas al centro.
 
 ---

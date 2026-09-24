@@ -151,15 +151,17 @@
 ### L. The Olbrite Ecosystem: Escenario Flotante 3D con Profundidad de Campo (DoF)
 1. **Reemplazo del Grid Estático por Escenario 3D Cinemático**:
    - Sección `#core-solution` evolucionada de una cuadrícula de 3 columnas a un escenario interactivo tridimensional con perspectiva óptica (`perspective: 1200px`).
-   - Protagonismo absoluto a las 3 soluciones de la plataforma (Agentic Development, Expert-in-the-Loop, Autonomous Business Systems) sin avatares que distraigan.
+   - Protagonismo absoluto a las 3 soluciones de la plataforma (Agentic Development, Expert-in-the-Loop, Autonomous Business Systems) flotando limpiamente en el espacio sin pedestales ni avatares.
 2. **Profundidad de Campo (Depth of Field) y Cinemática 3D Continua**:
    - En lugar de saltos instantáneos de flexbox `order`, las tarjetas se posicionan de manera absoluta en el espacio 3D interpoladas por la GPU con `cubic-bezier(0.16, 1, 0.3, 1)`:
      - **Tarjeta Central (Activa)**: `translate3d(0, 0, 75px) scale(1.02)`, `filter: blur(0px)`, `opacity: 1`, halo violeta Olbrite y `z-index: 15`.
      - **Tarjeta Izquierda**: `translate3d(-370px, 0, -90px) rotateY(18deg) scale(0.88)`, `filter: blur(2.5px)`, `opacity: 0.72`, `z-index: 8`.
      - **Tarjeta Derecha**: `translate3d(370px, 0, -90px) rotateY(-18deg) scale(0.88)`, `filter: blur(2.5px)`, `opacity: 0.72`, `z-index: 8`.
+   - **Velocidad de Vuelo Calibrada (15% más lenta)**: Transición ajustada a `0.86s` (frente a los `0.75s` anteriores), ofreciendo un desplazamiento aún más pausado, elegante y natural.
    - El desenfoque óptico (`blur(2.5px)`) emula la profundidad de lente de cámara, dirigiendo la atención del usuario a la propuesta central y permitiendo ver cómo las tarjetas vuelan fluidamente hacia adelante y atrás.
-3. **Ergonomía de Pantalla y Altura Compacta**:
-   - Altura de tarjetas optimizada a `470px` (ancho `345px`), mockups a `165px` y márgenes verticales condensados (`3.5rem` / `4.5rem`).
+3. **Ergonomía de Pantalla, Altura Compacta y Limpieza Visual**:
+   - Retiro de los botones CTA de cada tarjeta para dar total protagonismo al contenido y reducir la altura a **425px** (margen negativo `-212px`), mockups a `165px` y paddings condensados.
+   - Eliminación de la plataforma/pedestal circular bajo las tarjetas para lograr una estética limpia de tarjetas suspendidas en el aire.
    - El escenario completo entra holgadamente en viewports estándar (incluyendo laptops de 13" y 14") sin requerir scroll ni provocar recortes.
 4. **Interactividad y Control**:
    - Carrusel con ciclo continuo y cálculo modular `((idx - currentIndex) % 3 + 3) % 3`.

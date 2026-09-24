@@ -2873,8 +2873,8 @@ html.intro-off #mindy-avatar-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 510px;
-  padding-bottom: 15px;
+  min-height: 460px;
+  padding-bottom: 10px;
 }
 
 .ecosystem-3d-scene {
@@ -2882,7 +2882,7 @@ html.intro-off #mindy-avatar-container {
   perspective-origin: 50% 50%;
   width: 100%;
   max-width: 1200px;
-  height: 485px;
+  height: 440px;
   transform-style: preserve-3d;
   display: flex;
   justify-content: center;
@@ -2900,15 +2900,15 @@ html.intro-off #mindy-avatar-container {
   will-change: transform;
 }
 
-/* Base Card Glassmorphism - Compact & Balanced */
+/* Base Card Glassmorphism - Compact & Balanced (Buttons Removed) */
 .ecosystem-card {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 345px;
   max-width: 90vw;
-  height: 470px;
-  margin-top: -235px;
+  height: 425px;
+  margin-top: -212px;
   margin-left: -172px;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(28px) saturate(170%);
@@ -2921,10 +2921,10 @@ html.intro-off #mindy-avatar-container {
   justify-content: space-between;
   overflow: hidden;
   transform-style: preserve-3d;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: transform 0.86s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.86s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.86s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.86s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s ease;
   cursor: pointer;
   user-select: none;
@@ -3715,84 +3715,6 @@ html.intro-off #mindy-avatar-container {
 }
 
 /* ==========================================================================
-   Illuminated 3D Circular Pedestal
-   ========================================================================== */
-.ecosystem-pedestal-platform {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  max-width: 950px;
-  height: 110px;
-  pointer-events: none;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.pedestal-surface {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: perspective(700px) rotateX(68deg);
-}
-
-.pedestal-ring {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.ring-outer {
-  inset: 0;
-  border: 3px solid rgba(117, 75, 231, 0.28);
-  box-shadow: 0 0 35px rgba(157, 125, 248, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.85);
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6) 0%, rgba(240, 235, 255, 0.3) 60%, rgba(157, 125, 248, 0.15) 100%);
-}
-
-.ring-mid {
-  inset: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
-
-.ring-inner {
-  inset: 28px;
-  border: 1.5px solid rgba(117, 75, 231, 0.35);
-  background: radial-gradient(ellipse at center, rgba(157, 125, 248, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
-}
-
-.pedestal-core-glow {
-  position: absolute;
-  width: 65%;
-  height: 45%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(157, 125, 248, 0.7) 0%, rgba(117, 75, 231, 0) 70%);
-  filter: blur(16px);
-  animation: pulsePedestal 4s ease-in-out infinite alternate;
-}
-
-@keyframes pulsePedestal {
-  0% { transform: scale(0.95); opacity: 0.65; }
-  100% { transform: scale(1.05); opacity: 0.95; }
-}
-
-.pedestal-shadow {
-  position: absolute;
-  bottom: -20px;
-  width: 92%;
-  height: 45px;
-  background: radial-gradient(ellipse, rgba(117, 75, 231, 0.18) 0%, transparent 75%);
-  filter: blur(20px);
-}
-
-/* ==========================================================================
    Navigation Arrows & Pagination Dots
    ========================================================================== */
 .stage-nav-btn {
@@ -3869,14 +3791,14 @@ html.intro-off #mindy-avatar-container {
 
   .ecosystem-3d-scene {
     perspective: 900px;
-    height: 480px;
+    height: 435px;
   }
 
   .ecosystem-card {
     width: 90%;
     max-width: 350px;
-    height: 460px;
-    margin-top: -230px;
+    height: 420px;
+    margin-top: -210px;
     margin-left: -45%;
   }
 
