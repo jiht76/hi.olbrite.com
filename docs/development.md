@@ -199,12 +199,37 @@ hi.olbrite.com/
 
 ---
 
-## 4. Comandos de Trabajo
+## 5. Rediseño Estratégico y Arquitectura de Conversión (v3.5)
+
+### A. Reposicionamiento Estratégico Integral
+Olbrite pasa de presentarse como una "empresa de IA genérica / automatización de chats" a su categoría real de alto valor: **Agentes de IA, Equipos de IA y Sistemas Agénticos para Empresas** (*"People + Agents. Better work."* / *"A chatbot answers. An agent works."*).
+
+### B. Las 11 Secciones de la Narrativa Comercial
+1. **Hero**: Visualmente preservado al 100% (canvas, loop, puertas, 3D, Mindy). Se alinea la estrategia de conversión con el CTA primario `Start your Free Pre-Analysis` y secundario `See how it works`, respaldado por microcopy de fricción cero: *"No sales pressure • Free conversation with Mindy • Discover your best agent opportunities"*.
+2. **Technology Ecosystem (`#integrations`)**: Rieles animados con 20 logos vectoriales oficiales bajo el titular *"Our agents can work with the tools you already use"*.
+3. **What is an AI Agent? (`#what-is-an-agent`)**: Definición de la arquitectura agéntica de 5 pilares (Model, Tools, Skills, Harness, Loops), cita destacada (*"A chatbot answers. An agent works."*) y tabla comparativa de contraste *"Generic assistant"* vs *"AI agent"*.
+4. **From One Agent to an AI Team (`#ai-teams`)**: Pipeline visual de 5 pasos coordinados (Sales Agent → Research Agent → Qualification Agent → Follow-up Agent → Human Approval) y matriz de colaboración tripartita (*Agent-to-Agent*, *Agent-to-Human*, *Human-in-the-Loop*).
+5. **Why Olbrite? (`#why-choose`)**: Desglose de valor operativo *"Great agents don't happen by accident"* con 3 fases: `01 Build`, `02 Train`, `03 Supervise`, enfatizando ingenieros humanos certificados y sistemas gobernados.
+6. **The Olbrite Ecosystem (`#core-solution`)**: Escenario 3D cinemático flotante con perspectiva óptica (`Systems`, `Development`, `Experts`).
+7. **Free Pre-Analysis with Mindy (`#pre-analysis`)**: Experiencia interactiva de onboarding con 7 chips de intenciones de negocio (*Generate more leads, Respond faster, Automate repetitive work, Improve customer service, Connect disconnected systems, Build something with agents, Not sure yet*), previsualización de 4 fases de análisis, y disparo automático del chat widget oficial de LeadConnector (`data-widget-id="6aac49d1204f7932178f3c0e"`).
+8. **Proven Track Record & Experience (`#proof`)**: Credenciales verificables y defendibles (20+ años de experiencia digital, $3M+ presupuestos gestionados, #1 Google Partner y Microsoft for Startups, 24/7 uptime operativo).
+9. **Practical Business Use Cases (`#use-cases`)**: Casos de uso divididos en 4 áreas funcionales: *Sales*, *Customer Experience*, *Operations* y *Digital Products*.
+10. **Final CTA Card (`#contact`)**: Tarjeta envolvente en púrpura de lujo (`#100624` a `#2a0845`) con botones de doble acción: `Start my Free Pre-Analysis` y `Talk to Mindy`.
+11. **Footer Estructurado**: 5 columnas corporativas (*Brand, Solutions, Learn, Company, Commercial & Legal*).
+
+### C. Mantenimiento y Cache-Busting
+- Parámetros actualizados a `?v=3.5` en `index.html`, `style.css` y `main.js`.
+- Cero dependencias añadidas en runtime (100% Vanilla Web, CSS moderno y JS nativo).
+
+---
+
+## 6. Comandos de Trabajo
 
 ### Previsualización Local
 ```bash
 python3 -m http.server 3030
 # Abrir en: http://localhost:3030
+# Modo sin intro: http://localhost:3030/?intro=off
 ```
 
 ### Sincronizar y Publicar en Producción (`hi.olbrite.com`)
@@ -216,5 +241,7 @@ rsync -av --exclude='.git*' --exclude='.DS_Store' --exclude='dist' --exclude='do
 ~/.agents/skills/here-now/scripts/publish.sh dist --slug gilded-mortar-r7an --workspace olbrite --overwrite --client gemini
 
 # 3. Guardar en GitHub
-git add . && git commit -m "docs: update development notes and findings" && git push origin main
+git add . && git commit -m "feat: complete strategic positioning overhaul (AI agents, teams, systems, pre-analysis with Mindy)" && git push origin main
 ```
+
+

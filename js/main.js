@@ -1,4 +1,4 @@
-import { HeroController } from './hero-controller.js?v=3.4';
+import { HeroController } from './hero-controller.js?v=3.5';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Interactive Hero Stage
@@ -178,8 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.setAttribute('aria-selected', String(isActive));
       });
 
-      const isMobile = window.innerWidth <= 992;
-
       cards.forEach((card, idx) => {
         const rel = ((idx - currentIndex) % 3 + 3) % 3;
 
@@ -311,4 +309,150 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initEcosystemStage();
+
+  // 6. Global Pre-Analysis & Chat Widget Launcher
+  window.openMindyPreAnalysis = (customIntent) => {
+    // 1. Ensure LeadConnector chat widget script is present
+    let widgetScript = document.getElementById('leadconnector-chat-widget');
+    if (!widgetScript) {
+      widgetScript = document.createElement('script');
+      widgetScript.id = 'leadconnector-chat-widget';
+      widgetScript.src = 'https://widgets.leadconnectorhq.com/loader.js';
+      widgetScript.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+      widgetScript.setAttribute('data-widget-id', '6aac49d1204f7932178f3c0e');
+      widgetScript.async = true;
+      document.body.appendChild(widgetScript);
+    }
+
+    // 2. Function to interact with chat widget
+    const tryTriggerWidget = () => {
+      const widget = document.querySelector('chat-widget') || 
+                     document.querySelector('#chat-widget-container') ||
+                     document.querySelector('.chat-widget-launcher') ||
+                     document.querySelector('[id*="chat-widget"]');
+
+      if (widget) {
+        if (typeof widget.openChat === 'function') {
+          widget.openChat();
+          return true;
+        }
+        if (widget.shadowRoot) {
+          const shadowBtn = widget.shadowRoot.querySelector('button') || widget.shadowRoot.querySelector('.launcher');
+          if (shadowBtn) {
+            shadowBtn.click();
+            return true;
+          }
+        }
+        const directBtn = widget.querySelector('button');
+        if (directBtn) {
+          directBtn.click();
+          return true;
+        }
+        widget.click();
+        return true;
+      }
+
+      if (window.LC_API && typeof window.LC_API.open_chat_window === 'function') {
+        window.LC_API.open_chat_window();
+        return true;
+      }
+
+      return false;
+    };
+
+    if (!tryTriggerWidget()) {
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        if (tryTriggerWidget() || attempts > 25) {
+          clearInterval(interval);
+        }
+      }, 200);
+    }
+  };
+
+  // 7. Interactive Intent Chips & Pre-Analysis Exploration Experience
+  const initPreAnalysisInteractive = () => {
+    const chips = document.querySelectorAll('#preanalysis-chips .intent-chip');
+    const bubbleText = document.querySelector('.chat-message-bubble .chat-bubble-p');
+    const stepCards = document.querySelectorAll('.pillar-step-card');
+
+    const intentMessages = {
+      'Generate more leads': {
+        text: '“Lead generation! Mindy will evaluate how an agent can capture, score, and qualify inbound leads 24/7 across WhatsApp and your website.”',
+        stepId: 'step-opportunities'
+      },
+      'Respond faster': {
+        text: '“Speed to lead! Mindy will analyze your response times and show how sub-2-second automated replies prevent losing interested buyers.”',
+        stepId: 'step-challenges'
+      },
+      'Automate repetitive work': {
+        text: '“Operational workflows! Mindy will identify manual copy-paste tasks between your forms, CRM, spreadsheets and team chats.”',
+        stepId: 'step-challenges'
+      },
+      'Improve customer service': {
+        text: '“Customer experience! Mindy will assess how an agent with deep business context handles inquiries, bookings and human escalations.”',
+        stepId: 'step-business'
+      },
+      'Connect disconnected systems': {
+        text: '“System sync! Mindy will map how agents can bridge your tools (WhatsApp, HubSpot, Slack, Google Drive) into coordinated loops.”',
+        stepId: 'step-opportunities'
+      },
+      'Build something with agents': {
+        text: '“Custom agentic development! Mindy will discuss the specialized architecture and tools needed for your vision.”',
+        stepId: 'step-opportunities'
+      },
+      'Not sure yet': {
+        text: '“No problem at all! Mindy will guide you through a friendly 3-minute exploration to discover where AI agents fit best.”',
+        stepId: 'step-business'
+      }
+    };
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const intent = chip.dataset.intent;
+        const data = intentMessages[intent];
+
+        if (data && bubbleText) {
+          bubbleText.style.opacity = '0';
+          setTimeout(() => {
+            bubbleText.textContent = data.text;
+            bubbleText.style.transition = 'opacity 0.3s ease';
+            bubbleText.style.opacity = '1';
+          }, 150);
+
+          // Highlight matching step card briefly
+          stepCards.forEach(card => {
+            card.style.borderColor = '';
+            card.style.background = '';
+          });
+          const targetStep = document.getElementById(data.stepId);
+          if (targetStep) {
+            targetStep.style.borderColor = 'rgba(117, 75, 231, 0.6)';
+            targetStep.style.background = '#ffffff';
+            setTimeout(() => {
+              targetStep.style.borderColor = '';
+              targetStep.style.background = '';
+            }, 2000);
+          }
+        }
+      });
+    });
+
+    // Attach listener to all pre-analysis trigger buttons
+    const triggerBtns = document.querySelectorAll('.btn-open-preanalysis');
+    triggerBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const activeChip = document.querySelector('#preanalysis-chips .intent-chip.active');
+        const selectedIntent = activeChip ? activeChip.dataset.intent : 'General Pre-Analysis';
+        window.openMindyPreAnalysis(selectedIntent);
+      });
+    });
+  };
+
+  initPreAnalysisInteractive();
 });
+

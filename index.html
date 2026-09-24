@@ -34,7 +34,7 @@
   </script>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.4">
+  <link rel="stylesheet" href="css/style.css?v=3.5">
 </head>
 <body class="light-theme hero-locked">
 
@@ -57,18 +57,19 @@
         <ul class="nav-links">
           <li><a href="#hero-experience" class="nav-link-item">Platform</a></li>
           <li><a href="#what-is-an-agent" class="nav-link-item">What is an Agent</a></li>
+          <li><a href="#ai-teams" class="nav-link-item">AI Teams</a></li>
           <li><a href="#why-choose" class="nav-link-item">Why Olbrite</a></li>
           <li><a href="#core-solution" class="nav-link-item">Solutions</a></li>
-          <li><a href="#results" class="nav-link-item">Results</a></li>
-          <li><a href="#contact" class="nav-link-item">Contact</a></li>
+          <li><a href="#pre-analysis" class="nav-link-item">Pre-Analysis</a></li>
+          <li><a href="#use-cases" class="nav-link-item">Use Cases</a></li>
         </ul>
 
         <div class="nav-actions">
           <a href="#login" class="btn-login">Log in</a>
-          <a href="#demo" class="btn-primary">
-            <span>Book a demo</span>
+          <button class="btn-primary btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+            <span>Free Pre-Analysis</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -120,16 +121,21 @@
           </h1>
 
           <div class="hero-cta-group hero-reveal-item" id="hero-main-cta">
-            <a href="#demo" class="btn-primary">
-              <span>Book a demo</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            
-            <button class="btn-secondary" id="btn-play-demo" aria-label="Ver demostración en video">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>See how it works</span>
+            <button class="btn-primary btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+              <span>Start your Free Pre-Analysis</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
+            
+            <a href="#what-is-an-agent" class="btn-secondary" id="btn-hero-learn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              <span>See how it works</span>
+            </a>
           </div>
+
+          <!-- Supporting CTA Microcopy -->
+          <p class="hero-cta-microcopy hero-reveal-item">
+            Discover where AI agents could create value in your business.
+          </p>
 
           <!-- Social Proof (Reveals after primary texts) -->
           <div class="hero-social-proof" id="hero-social-proof">
@@ -141,7 +147,7 @@
             </div>
             <div class="social-proof-text">
               <strong>Over 500 agents and projects</strong><br>
-              From ambitious startups to global fast-growing brands.
+              From ambitious startups to fast-growing businesses.
             </div>
           </div>
 
@@ -201,9 +207,9 @@
     <section class="integrations-section" id="integrations">
       <div class="integrations-container">
         <div class="section-header integrations-header">
-          <span class="section-tag">Ecosystem & Compatibility</span>
-          <h2 class="section-title">Our agents can work with...</h2>
-          <p class="section-subtitle">Seamless native integration with leading AI models, communication channels, CRMs, and business apps.</p>
+          <span class="section-tag">TECHNOLOGY ECOSYSTEM</span>
+          <h2 class="section-title">Our agents can work with the tools you already use.</h2>
+          <p class="section-subtitle">Connect leading AI models, communication channels, business applications and data into coordinated workflows — without replacing your existing technology stack.</p>
         </div>
       </div>
 
@@ -405,37 +411,36 @@
       </div>
     </section>
 
-    <!-- What is an Agent Section (Interactive Educational Architecture) -->
+    <!-- What is an AI Agent Section (Interactive Educational Architecture) -->
     <section class="what-is-an-agent-section" id="what-is-an-agent">
       <div class="agent-explainer-container">
         
-        <!-- Left Column: Educational Framing & Comparative Matrix -->
+        <!-- Left Column: Educational Framing, Pull-Quote & Comparative Matrix -->
         <div class="agent-explainer-left">
           <div class="section-tag-wrapper">
             <span class="section-tag">UNDERSTAND THE POWER</span>
           </div>
 
           <h2 class="agent-explainer-title">
-            What is <span class="gradient-text">an agent?</span>
+            What is <span class="gradient-text">an AI agent?</span>
           </h2>
 
           <p class="agent-explainer-lead">
             An AI agent is much more than a generic assistant. It combines a <strong>model</strong>, <strong>tools</strong>, <strong>skills</strong>, <strong>guardrails</strong>, and <strong>repeatable workflows</strong> to complete real tasks reliably on your behalf.
           </p>
 
-          <div class="agent-cta-row">
-            <a href="#demo" class="btn-primary btn-agent-learn" id="btn-see-how-agents-work">
-              <span>See how it works</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+          <!-- Visual Pull-Quote -->
+          <div class="agent-pullquote">
+            <span class="pullquote-sparkle">⚡</span>
+            <span class="pullquote-text">“A chatbot answers. An agent works.”</span>
           </div>
 
-          <!-- Comparison Card: More than a generic assistant -->
+          <!-- Comparison Card: Generic Assistant vs AI Agent -->
           <div class="agent-comparison-card">
             <div class="comparison-card-top">
               <div class="comparison-badge">
                 <span class="sparkle-icon">✨</span>
-                <span>More than a generic assistant</span>
+                <span>The Crucial Difference</span>
               </div>
             </div>
 
@@ -455,11 +460,19 @@
                   </li>
                   <li class="item-negative">
                     <span class="status-marker marker-cross">✕</span>
-                    <span>Limited memory</span>
+                    <span>Waits for instructions</span>
                   </li>
                   <li class="item-negative">
                     <span class="status-marker marker-cross">✕</span>
-                    <span>No real workflow execution</span>
+                    <span>Limited business context</span>
+                  </li>
+                  <li class="item-negative">
+                    <span class="status-marker marker-cross">✕</span>
+                    <span>Doesn't operate external systems</span>
+                  </li>
+                  <li class="item-negative">
+                    <span class="status-marker marker-cross">✕</span>
+                    <span>Rarely completes full workflows</span>
                   </li>
                 </ul>
               </div>
@@ -475,27 +488,38 @@
                 <ul class="comparison-check-list">
                   <li class="item-positive">
                     <span class="status-marker marker-check">✓</span>
-                    <span>Uses tools</span>
+                    <span>Uses tools &amp; APIs</span>
                   </li>
                   <li class="item-positive">
                     <span class="status-marker marker-check">✓</span>
-                    <span>Follows instructions</span>
+                    <span>Works with business context</span>
                   </li>
                   <li class="item-positive">
                     <span class="status-marker marker-check">✓</span>
-                    <span>Executes workflows</span>
+                    <span>Executes multi-step workflows</span>
                   </li>
                   <li class="item-positive">
                     <span class="status-marker marker-check">✓</span>
-                    <span>Learns through loops</span>
+                    <span>Collaborates with other agents</span>
                   </li>
                   <li class="item-positive">
                     <span class="status-marker marker-check">✓</span>
-                    <span>Works with safeguards</span>
+                    <span>Hands work to humans when needed</span>
+                  </li>
+                  <li class="item-positive">
+                    <span class="status-marker marker-check">✓</span>
+                    <span>Operates within strict guardrails</span>
                   </li>
                 </ul>
               </div>
             </div>
+          </div>
+
+          <div class="agent-cta-row">
+            <a href="#ai-teams" class="btn-primary btn-agent-learn">
+              <span>See how agents form AI teams</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
 
         </div>
@@ -654,6 +678,184 @@
       </div>
     </section>
 
+    <!-- =====================================================================
+         Section 4: From One Agent to an AI Team (AI Teams in Action)
+         ===================================================================== -->
+    <section class="ai-teams-section" id="ai-teams">
+      <div class="ai-teams-container">
+        
+        <div class="section-header ai-teams-header">
+          <span class="section-tag teams-tag">THIS IS AGENTIC WORK</span>
+          <h2 class="section-title teams-title">One agent can help. <span class="gradient-text">An AI team can do much more.</span></h2>
+          <p class="section-subtitle teams-subtitle">Specialized agents can collaborate, share context, hand off tasks and work alongside your people to complete larger workflows.</p>
+          <div class="teams-quote-pill">
+            <span class="pill-sparkle">✨</span>
+            <span>Agents specialize, collaborate and execute workflows while people remain in control.</span>
+          </div>
+        </div>
+
+        <!-- Interactive AI Team Workflow Pipeline Stage -->
+        <div class="ai-teams-pipeline-stage">
+          
+          <div class="pipeline-flow-track">
+            
+            <!-- Agent 1: Sales Agent -->
+            <div class="pipeline-agent-card" data-agent="sales">
+              <div class="agent-card-header">
+                <div class="agent-avatar-badge avatar-sales">
+                  <span>🎯</span>
+                </div>
+                <div class="agent-role-meta">
+                  <span class="agent-badge-tag">STEP 01</span>
+                  <h3 class="agent-name">Sales Agent</h3>
+                </div>
+              </div>
+              <div class="agent-task-box">
+                <span class="task-action-label">Triggers Workflow</span>
+                <p class="agent-action-desc">Receives new lead via WhatsApp, Web Chat or form in under 2 seconds.</p>
+              </div>
+              <div class="agent-handoff-pill">
+                <span class="handoff-dot"></span>
+                <span>Context compiled &amp; passed</span>
+              </div>
+            </div>
+
+            <!-- Connector Arrow 1 -->
+            <div class="pipeline-connector" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+
+            <!-- Agent 2: Research Agent -->
+            <div class="pipeline-agent-card" data-agent="research">
+              <div class="agent-card-header">
+                <div class="agent-avatar-badge avatar-research">
+                  <span>🔍</span>
+                </div>
+                <div class="agent-role-meta">
+                  <span class="agent-badge-tag">STEP 02</span>
+                  <h3 class="agent-name">Research Agent</h3>
+                </div>
+              </div>
+              <div class="agent-task-box">
+                <span class="task-action-label">Context Enrichment</span>
+                <p class="agent-action-desc">Queries databases, web &amp; business registries to verify company size and tech stack.</p>
+              </div>
+              <div class="agent-handoff-pill">
+                <span class="handoff-dot"></span>
+                <span>Profile enriched</span>
+              </div>
+            </div>
+
+            <!-- Connector Arrow 2 -->
+            <div class="pipeline-connector" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+
+            <!-- Agent 3: Qualification Agent -->
+            <div class="pipeline-agent-card" data-agent="qualification">
+              <div class="agent-card-header">
+                <div class="agent-avatar-badge avatar-qualification">
+                  <span>⚡</span>
+                </div>
+                <div class="agent-role-meta">
+                  <span class="agent-badge-tag">STEP 03</span>
+                  <h3 class="agent-name">Qualification Agent</h3>
+                </div>
+              </div>
+              <div class="agent-task-box">
+                <span class="task-action-label">ICP Fit &amp; Scoring</span>
+                <p class="agent-action-desc">Evaluates operational fit, urgency and budget signals against company rules.</p>
+              </div>
+              <div class="agent-handoff-pill">
+                <span class="handoff-dot"></span>
+                <span>Score: 94/100 (Qualified)</span>
+              </div>
+            </div>
+
+            <!-- Connector Arrow 3 -->
+            <div class="pipeline-connector" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+
+            <!-- Agent 4: Follow-up Agent -->
+            <div class="pipeline-agent-card" data-agent="followup">
+              <div class="agent-card-header">
+                <div class="agent-avatar-badge avatar-followup">
+                  <span>💬</span>
+                </div>
+                <div class="agent-role-meta">
+                  <span class="agent-badge-tag">STEP 04</span>
+                  <h3 class="agent-name">Follow-up Agent</h3>
+                </div>
+              </div>
+              <div class="agent-task-box">
+                <span class="task-action-label">Conversational Nurture</span>
+                <p class="agent-action-desc">Answers questions, presents relevant proposals, and coordinates calendar booking.</p>
+              </div>
+              <div class="agent-handoff-pill">
+                <span class="handoff-dot"></span>
+                <span>Meeting slot proposed</span>
+              </div>
+            </div>
+
+            <!-- Connector Arrow 4 -->
+            <div class="pipeline-connector" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+
+            <!-- Agent 5: Operations / Human Specialist -->
+            <div class="pipeline-agent-card card-human-loop" data-agent="human">
+              <div class="agent-card-header">
+                <div class="agent-avatar-badge avatar-human">
+                  <span>👤</span>
+                </div>
+                <div class="agent-role-meta">
+                  <span class="agent-badge-tag human-tag">FINAL APPROVAL</span>
+                  <h3 class="agent-name">Operations / Human</h3>
+                </div>
+              </div>
+              <div class="agent-task-box">
+                <span class="task-action-label">Executive Control</span>
+                <p class="agent-action-desc">Human team confirms high-value contract terms and welcomes the new client.</p>
+              </div>
+              <div class="agent-handoff-pill human-pill">
+                <span class="handoff-dot dot-live"></span>
+                <span>Strategic Deal Closed</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Collaboration Network Matrix -->
+          <div class="teams-collaboration-grid">
+            <div class="collab-badge-item">
+              <div class="collab-icon">🤝</div>
+              <div class="collab-text">
+                <strong>Agents ↔ Agents</strong>
+                <span>Continuous context sharing and autonomous task handoffs without friction.</span>
+              </div>
+            </div>
+            <div class="collab-badge-item">
+              <div class="collab-icon">🛠️</div>
+              <div class="collab-text">
+                <strong>Agents ↔ Tools</strong>
+                <span>Direct real-time execution across CRMs, communication channels and APIs.</span>
+              </div>
+            </div>
+            <div class="collab-badge-item">
+              <div class="collab-icon">🛡️</div>
+              <div class="collab-text">
+                <strong>Agents ↔ Humans</strong>
+                <span>Human-in-the-loop escalation ensures full governance and executive supervision.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
     <!-- Why Choose Olbrite Section (We build, train and supervise AI agents) -->
     <section class="why-choose-section" id="why-choose">
       <div class="why-choose-container">
@@ -664,50 +866,55 @@
           <!-- Left Column: Strategic Message & CTA -->
           <div class="why-choose-intro">
             <div class="section-tag-wrapper">
-              <span class="why-choose-tag">WHY CHOOSE OLBRITE</span>
+              <span class="why-choose-tag">THE OLBRITE ADVANTAGE</span>
             </div>
 
             <h2 class="why-choose-title">
-              We build,<br>
-              train and<br>
-              supervise<br>
-              <span class="gradient-text">AI agents</span><br>
-              for your business.
+              Great agents<br>
+              don't happen<br>
+              <span class="gradient-text">by accident.</span>
             </h2>
 
             <p class="why-choose-lead">
-              You get more than technology. You get a strategic partner with 20+ years of digital experience, award-winning expertise, and a proven track record in high-impact projects.
+              Reliable agents need architecture, business context, integrations, testing, supervision and continuous improvement. We take care of the entire lifecycle so your team gets results from day one.
             </p>
 
             <div class="why-choose-cta-wrap">
               <div class="why-choose-btn-row">
-                <a href="#demo" class="btn-primary btn-why-quote" id="btn-why-quote">
-                  <span>Quote with us</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                </a>
-                <span class="handwritten-accent">Let's make it happen.</span>
+                <button class="btn-primary btn-why-quote btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+                  <span>Start your Free Pre-Analysis</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <span class="handwritten-accent">People + Agents. Better work.</span>
               </div>
               <div class="why-choose-micro-badge">
                 <span class="sparkle-icon">✨</span>
-                <span>Includes free business & workflow diagnosis with Mindy</span>
+                <span>Includes free business &amp; workflow pre-analysis with Mindy</span>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: 3 Process Pillar Glass Cards -->
+          <!-- Right Column: 3 Process Pillar Glass Cards (Build, Train, Supervise) -->
           <div class="why-choose-pillars-grid">
             
             <!-- Pillar 01: We build -->
             <div class="why-pillar-card" data-pillar="build">
               <div class="pillar-card-inner">
+                <div class="pillar-card-header-bar">
+                  <span class="pillar-num">01</span>
+                  <span class="pillar-action-badge">WE BUILD</span>
+                </div>
                 <div class="pillar-media-frame">
                   <img src="assets/why-choose-card-01.jpg" alt="We build custom AI agents - Olbrite" class="pillar-img" loading="lazy">
                   <div class="pillar-ambient-glow glow-blue" aria-hidden="true"></div>
                 </div>
-                <!-- Interactive subtle badge on hover -->
+                <div class="pillar-card-body">
+                  <h3 class="pillar-card-title">Architecture &amp; Integrations</h3>
+                  <p class="pillar-card-desc">We design agents around your goals, systems, channels and workflows. Model, tools, skills, permissions and guardrails.</p>
+                </div>
                 <div class="pillar-hover-chip">
                   <span class="chip-dot"></span>
-                  <span>Modular AI Architecture</span>
+                  <span>Model • Tools • Workflows</span>
                 </div>
               </div>
             </div>
@@ -715,14 +922,21 @@
             <!-- Pillar 02: We train -->
             <div class="why-pillar-card" data-pillar="train">
               <div class="pillar-card-inner">
+                <div class="pillar-card-header-bar">
+                  <span class="pillar-num">02</span>
+                  <span class="pillar-action-badge">WE TRAIN</span>
+                </div>
                 <div class="pillar-media-frame">
                   <img src="assets/why-choose-card-02.jpg" alt="We train AI agents with your company data - Olbrite" class="pillar-img" loading="lazy">
                   <div class="pillar-ambient-glow glow-purple" aria-hidden="true"></div>
                 </div>
-                <!-- Interactive subtle badge on hover with animated progress shimmer -->
+                <div class="pillar-card-body">
+                  <h3 class="pillar-card-title">Context &amp; Business Data</h3>
+                  <p class="pillar-card-desc">We prepare agents using your knowledge base, company processes, past conversations, testing scenarios and edge cases.</p>
+                </div>
                 <div class="pillar-hover-chip chip-progress">
                   <span class="mini-pulse-spinner"></span>
-                  <span>Active Training • 78%</span>
+                  <span>Company Knowledge • Active Scenarios</span>
                 </div>
               </div>
             </div>
@@ -730,14 +944,21 @@
             <!-- Pillar 03: We supervise -->
             <div class="why-pillar-card" data-pillar="supervise">
               <div class="pillar-card-inner">
+                <div class="pillar-card-header-bar">
+                  <span class="pillar-num">03</span>
+                  <span class="pillar-action-badge">WE SUPERVISE</span>
+                </div>
                 <div class="pillar-media-frame">
                   <img src="assets/why-choose-card-03.jpg" alt="We supervise AI agent performance and results - Olbrite" class="pillar-img" loading="lazy">
                   <div class="pillar-ambient-glow glow-cyan" aria-hidden="true"></div>
                 </div>
-                <!-- Interactive subtle badge on hover with live pulse indicator -->
+                <div class="pillar-card-body">
+                  <h3 class="pillar-card-title">Oversight &amp; Optimization</h3>
+                  <p class="pillar-card-desc">We monitor performance, refine workflows and ensure human-in-the-loop escalation so agents deliver reliable results.</p>
+                </div>
                 <div class="pillar-hover-chip chip-live">
                   <span class="live-dot-pulse"></span>
-                  <span>12 Agents Online • +68% Conv</span>
+                  <span>24/7 Monitoring • Human Oversight</span>
                 </div>
               </div>
             </div>
@@ -833,8 +1054,8 @@
         <!-- Header -->
         <div class="ecosystem-header">
           <span class="section-tag ecosystem-tag">THE OLBRITE ECOSYSTEM</span>
-          <h2 class="ecosystem-title">Three ways we help businesses <span class="title-highlight">put AI to work.</span></h2>
-          <p class="ecosystem-subtitle">Systems, development and expert guidance — designed to help you launch faster and grow smarter.</p>
+          <h2 class="ecosystem-title">Three ways we help businesses <span class="title-highlight">put agents to work.</span></h2>
+          <p class="ecosystem-subtitle">Systems, development and expert guidance — combined according to what your business needs.</p>
         </div>
 
         <!-- 3D Carousel Stage Wrapper -->
@@ -858,7 +1079,7 @@
                   </div>
                   <div class="card-title-group">
                     <h3 class="card-main-heading">Olbrite Systems</h3>
-                    <p class="card-sub-heading">Ready-to-use systems for sales, service and operations.</p>
+                    <p class="card-sub-heading">Ready-to-use agentic systems for sales, service and operations.</p>
                   </div>
                 </div>
 
@@ -928,8 +1149,8 @@
 
                 <!-- Feature Checkpoints -->
                 <ul class="card-features-list">
-                  <li><span class="check-icon">✓</span> Olbrite S3 for conversations, CRM and automation</li>
-                  <li><span class="check-icon">✓</span> Olbrite Multi for coordinated AI and human workflows</li>
+                  <li><span class="check-icon">✓</span> Olbrite S3 for conversations, CRM, automation and workflows</li>
+                  <li><span class="check-icon">✓</span> Olbrite Multi for AI agents and humans collaborating together</li>
                   <li><span class="check-icon">✓</span> Omnichannel communication across WhatsApp, Instagram and more</li>
                   <li><span class="check-icon">✓</span> Built to help teams respond, follow up and scale</li>
                 </ul>
@@ -1020,10 +1241,10 @@ agent = Agent(
 
                 <!-- Feature Checkpoints -->
                 <ul class="card-features-list">
-                  <li><span class="check-icon">✓</span> Websites, mobile apps and internal tools</li>
-                  <li><span class="check-icon">✓</span> AI-powered features and custom integrations</li>
-                  <li><span class="check-icon">✓</span> API connections and workflow automation</li>
-                  <li><span class="check-icon">✓</span> Designed for real operations, not just demos</li>
+                  <li><span class="check-icon">✓</span> Websites, web applications, mobile apps and internal tools</li>
+                  <li><span class="check-icon">✓</span> AI-powered applications, custom agents and native integrations</li>
+                  <li><span class="check-icon">✓</span> API connections, database sync and workflow automation</li>
+                  <li><span class="check-icon">✓</span> When existing platforms aren't enough, we build what you need</li>
                 </ul>
               </article>
 
@@ -1037,7 +1258,7 @@ agent = Agent(
                   </div>
                   <div class="card-title-group">
                     <h3 class="card-main-heading">Olbrite Experts</h3>
-                    <p class="card-sub-heading">Strategy, implementation and ongoing support.</p>
+                    <p class="card-sub-heading">Human expertise behind your AI agents.</p>
                   </div>
                 </div>
 
@@ -1103,10 +1324,10 @@ agent = Agent(
 
                 <!-- Feature Checkpoints -->
                 <ul class="card-features-list">
-                  <li><span class="check-icon">✓</span> AI diagnosis and opportunity mapping</li>
-                  <li><span class="check-icon">✓</span> Process design and implementation planning</li>
-                  <li><span class="check-icon">✓</span> Training, supervision and optimization</li>
-                  <li><span class="check-icon">✓</span> Guidance to help your team adopt AI with confidence</li>
+                  <li><span class="check-icon">✓</span> AI opportunity analysis and business process diagnosis</li>
+                  <li><span class="check-icon">✓</span> Agent architecture, AI readiness and implementation design</li>
+                  <li><span class="check-icon">✓</span> Training, supervision, optimization and change management</li>
+                  <li><span class="check-icon">✓</span> You don't need to know which model or system you need. That's our job.</li>
                 </ul>
               </article>
 
@@ -1129,77 +1350,306 @@ agent = Agent(
       </div>
     </section>
 
-    <!-- Measurable Impact / Real Results -->
-    <section class="section" id="results">
-      <div class="section-header">
-        <span class="section-tag">Measurable Impact</span>
-        <h2 class="section-title">Proven Results That Drive Bottom-Line Scale</h2>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value">↑ 175%</div>
-          <div class="stat-label">Inbound Sales Growth</div>
-          <p class="stat-quote">"Olbrite doubled our qualified pipeline within 60 days without adding extra headcount."</p>
+    <!-- =====================================================================
+         Section 7: Core Conversion — Free Pre-Analysis with Mindy
+         ===================================================================== -->
+    <section class="pre-analysis-section" id="pre-analysis">
+      <div class="pre-analysis-container">
+        
+        <div class="section-header pre-analysis-header">
+          <span class="section-tag preanalysis-tag">YOUR FIRST STEP</span>
+          <h2 class="section-title preanalysis-title">Where could agents make the biggest difference <span class="gradient-text">in your business?</span></h2>
+          <p class="section-subtitle preanalysis-subtitle">Talk with Mindy about your business, challenges and goals. In a few minutes, she'll begin identifying areas where AI agents, automation or custom solutions could help.</p>
         </div>
 
-        <div class="stat-card">
-          <div class="stat-value">↑ 80%</div>
-          <div class="stat-label">Faster First Response</div>
-          <p class="stat-quote">"Our initial response time dropped from 45 minutes to 18 seconds across all channels."</p>
+        <!-- Interactive Pre-Analysis Preview Stage -->
+        <div class="pre-analysis-stage">
+          
+          <!-- Mindy Interactive Chat Frame -->
+          <div class="pre-analysis-chat-frame">
+            <div class="chat-frame-top">
+              <div class="chat-avatar-ring">
+                <span class="avatar-dot-online"></span>
+                <span class="avatar-emoji">👩‍💻</span>
+              </div>
+              <div class="chat-meta">
+                <h4>Mindy • Olbrite AI Concierge</h4>
+                <p>The first Olbrite agent already working for you</p>
+              </div>
+              <div class="chat-badge-live">
+                <span class="pulsing-live-dot"></span>
+                <span>Active Pre-Analysis</span>
+              </div>
+            </div>
+
+            <!-- Mindy Greeting & Question -->
+            <div class="chat-message-bubble">
+              <p class="chat-bubble-p">“Hi! What would you most like to improve in your business right now?”</p>
+              <span class="chat-hint">Click an area below to focus your pre-analysis:</span>
+            </div>
+
+            <!-- Interactive Goal Chips (7 Options) -->
+            <div class="preanalysis-intent-chips" id="preanalysis-chips">
+              <button class="intent-chip active" data-intent="Generate more leads">
+                <span class="chip-emoji">🎯</span>
+                <span>Generate more leads</span>
+              </button>
+              <button class="intent-chip" data-intent="Respond faster">
+                <span class="chip-emoji">⚡</span>
+                <span>Respond faster</span>
+              </button>
+              <button class="intent-chip" data-intent="Automate repetitive work">
+                <span class="chip-emoji">🔄</span>
+                <span>Automate repetitive work</span>
+              </button>
+              <button class="intent-chip" data-intent="Improve customer service">
+                <span class="chip-emoji">💬</span>
+                <span>Improve customer service</span>
+              </button>
+              <button class="intent-chip" data-intent="Connect disconnected systems">
+                <span class="chip-emoji">🔗</span>
+                <span>Connect disconnected systems</span>
+              </button>
+              <button class="intent-chip" data-intent="Build something with agents">
+                <span class="chip-emoji">🤖</span>
+                <span>Build something with agents</span>
+              </button>
+              <button class="intent-chip" data-intent="Not sure yet">
+                <span class="chip-emoji">❓</span>
+                <span>Not sure yet</span>
+              </button>
+            </div>
+
+            <!-- 4 Exploration Areas Visualized -->
+            <div class="preanalysis-pillars-wrap">
+              <div class="pillar-step-card" id="step-business">
+                <div class="step-num-pill">01</div>
+                <h5>YOUR BUSINESS</h5>
+                <p>What your company does, who you serve and your current workflows.</p>
+              </div>
+
+              <div class="pillar-step-card" id="step-challenges">
+                <div class="step-num-pill">02</div>
+                <h5>YOUR CHALLENGES</h5>
+                <p>Where time, information, response speed or opportunities are lost.</p>
+              </div>
+
+              <div class="pillar-step-card" id="step-opportunities">
+                <div class="step-num-pill">03</div>
+                <h5>AGENT OPPORTUNITIES</h5>
+                <p>Where specialized agents or teams could create measurable value.</p>
+              </div>
+
+              <div class="pillar-step-card" id="step-next">
+                <div class="step-num-pill">04</div>
+                <h5>NEXT STEP</h5>
+                <p>Whether there is enough tangible opportunity to continue exploring.</p>
+              </div>
+            </div>
+
+            <!-- Bottom CTA Action Area -->
+            <div class="preanalysis-action-bar">
+              <button class="btn-primary btn-large btn-launch-preanalysis btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+                <span class="sparkle-icon">✨</span>
+                <span>Start my Free Pre-Analysis</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <div class="preanalysis-trust-line">
+                <span class="trust-item"><span class="check-green">✓</span> Free</span>
+                <span class="trust-dot">•</span>
+                <span class="trust-item"><span class="check-green">✓</span> No obligation</span>
+                <span class="trust-dot">•</span>
+                <span class="trust-item"><span class="check-green">✓</span> Takes only a few minutes</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="stat-card">
-          <div class="stat-value">↑ 60%</div>
-          <div class="stat-label">Meeting Booking Rate</div>
-          <p class="stat-quote">"The 3D AI assistant qualifies prospects seamlessly and books them right on our calendar."</p>
-        </div>
       </div>
     </section>
 
-    <!-- Industry Tailored Solutions -->
-    <section class="section" id="industry">
-      <div class="section-header">
-        <span class="section-tag">Tailored Architecture</span>
-        <h2 class="section-title">Built for Modern Verticals</h2>
-      </div>
-
-      <div class="cards-grid-3">
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          </div>
-          <h3>E-Commerce & Retail</h3>
-          <p>Instant order tracking, product recommendations, cart abandonment recovery and 24/7 customer support on WhatsApp.</p>
+    <!-- =====================================================================
+         Section 8: Proof & Experience (Defensible Track Record)
+         ===================================================================== -->
+    <section class="proof-section" id="proof">
+      <div class="proof-container">
+        
+        <div class="section-header proof-header">
+          <span class="section-tag proof-tag">PROVEN TRACK RECORD</span>
+          <h2 class="section-title proof-title">Real experience. <span class="gradient-text">Defensible results.</span></h2>
+          <p class="section-subtitle proof-subtitle">We don't publish inflated claims. We rely on decades of hands-on digital engineering, top-tier recognitions, and strict operational standards.</p>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="proof-cards-grid">
+          
+          <div class="proof-stat-card">
+            <div class="proof-stat-top">
+              <span class="proof-number">20+</span>
+              <span class="proof-badge-label">YEARS</span>
+            </div>
+            <h3 class="proof-card-heading">Digital Experience</h3>
+            <p class="proof-card-desc">Decades of building digital platforms, system integrations, and mission-critical workflows across diverse industries.</p>
           </div>
-          <h3>Real Estate & Property</h3>
-          <p>Instant property matching, automated viewing appointments, and continuous prospect nurture with high touch personal feel.</p>
+
+          <div class="proof-stat-card">
+            <div class="proof-stat-top">
+              <span class="proof-number">$3M+</span>
+              <span class="proof-badge-label">MANAGED</span>
+            </div>
+            <h3 class="proof-card-heading">Project Budgets &amp; Ops</h3>
+            <p class="proof-card-desc">Proven experience stewarding multi-million-dollar technology investments, automation pipelines, and enterprise initiatives.</p>
+          </div>
+
+          <div class="proof-stat-card">
+            <div class="proof-stat-top">
+              <span class="proof-award-icon">🏆</span>
+              <span class="proof-badge-label">PARTNERSHIPS</span>
+            </div>
+            <h3 class="proof-card-heading">Industry Recognition</h3>
+            <p class="proof-card-desc">Recognized with #1 Google Partner first-place standing and accepted into the Microsoft for Startups program.</p>
+          </div>
+
+          <div class="proof-stat-card">
+            <div class="proof-stat-top">
+              <span class="proof-number">24/7</span>
+              <span class="proof-badge-label">RELIABILITY</span>
+            </div>
+            <h3 class="proof-card-heading">Autonomous Uptime</h3>
+            <p class="proof-card-desc">Role-based security boundaries, human-in-the-loop guardrails, and real-time supervision maintaining reliable operational execution.</p>
+          </div>
+
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-          </div>
-          <h3>B2B SaaS & Tech</h3>
-          <p>Instant inbound demo scheduling, automated lead enrichment, CRM sync and intelligent outbound reactivation.</p>
-        </div>
       </div>
     </section>
 
-    <!-- Final High-Conversion CTA Banner -->
-    <section class="section" id="contact">
-      <div class="cta-banner">
-        <div class="cta-banner-content">
-          <h2>Ready to power your growth?</h2>
-          <p>Empower your team with intelligent AI agents that work alongside you 24/7. Get your free personalized demo today.</p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#demo" class="btn-primary" style="background: #ffffff; color: var(--primary);">Get Started for Free</a>
-            <a href="#demo" class="btn-secondary" style="background: rgba(255,255,255,0.1); color: #ffffff; border-color: rgba(255,255,255,0.3);">Book a Live Demo</a>
+    <!-- =====================================================================
+         Section 9: Business Use Cases (Operational Categories)
+         ===================================================================== -->
+    <section class="use-cases-section" id="use-cases">
+      <div class="use-cases-container">
+        
+        <div class="section-header use-cases-header">
+          <span class="section-tag usecases-tag">PRACTICAL AGENTIC WORK</span>
+          <h2 class="section-title usecases-title">What could an AI team do <span class="gradient-text">inside your business?</span></h2>
+          <p class="section-subtitle usecases-subtitle">From revenue generation to core operations, see how specialized agents work across your company.</p>
+        </div>
+
+        <div class="use-cases-grid-4">
+          
+          <!-- Category 1: Sales -->
+          <div class="use-case-card">
+            <div class="use-case-header">
+              <div class="use-case-icon icon-sales">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <span class="use-case-category-tag">CATEGORY 01</span>
+                <h3 class="use-case-title">Sales</h3>
+              </div>
+            </div>
+            <ul class="use-case-list">
+              <li><span class="bullet-dot"></span><strong>Qualify leads</strong> across WhatsApp, web &amp; social channels 24/7</li>
+              <li><span class="bullet-dot"></span><strong>Instant follow-up</strong> with personalized contextual responses</li>
+              <li><span class="bullet-dot"></span><strong>Book meetings</strong> directly into sales team calendars</li>
+              <li><span class="bullet-dot"></span><strong>Recover opportunities</strong> by re-engaging stalled conversations</li>
+            </ul>
+          </div>
+
+          <!-- Category 2: Customer Experience -->
+          <div class="use-case-card">
+            <div class="use-case-header">
+              <div class="use-case-icon icon-cx">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <span class="use-case-category-tag">CATEGORY 02</span>
+                <h3 class="use-case-title">Customer Experience</h3>
+              </div>
+            </div>
+            <ul class="use-case-list">
+              <li><span class="bullet-dot"></span><strong>Answer customers</strong> with deep business context &amp; policy awareness</li>
+              <li><span class="bullet-dot"></span><strong>Route conversations</strong> intelligently based on customer intent</li>
+              <li><span class="bullet-dot"></span><strong>Contextual assistance</strong> for orders, bookings, tracking and FAQs</li>
+              <li><span class="bullet-dot"></span><strong>Escalate to humans</strong> seamlessly with conversation summaries</li>
+            </ul>
+          </div>
+
+          <!-- Category 3: Operations -->
+          <div class="use-case-card">
+            <div class="use-case-header">
+              <div class="use-case-icon icon-ops">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div>
+                <span class="use-case-category-tag">CATEGORY 03</span>
+                <h3 class="use-case-title">Operations</h3>
+              </div>
+            </div>
+            <ul class="use-case-list">
+              <li><span class="bullet-dot"></span><strong>Autonomous research</strong> and data enrichment on companies &amp; contacts</li>
+              <li><span class="bullet-dot"></span><strong>Process information</strong> from invoices, emails, documents and forms</li>
+              <li><span class="bullet-dot"></span><strong>Coordinate tasks</strong> between CRM, project managers and Slack</li>
+              <li><span class="bullet-dot"></span><strong>Connect systems</strong> and automate repetitive back-office handoffs</li>
+            </ul>
+          </div>
+
+          <!-- Category 4: Digital Products -->
+          <div class="use-case-card">
+            <div class="use-case-header">
+              <div class="use-case-icon icon-products">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8Z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <div>
+                <span class="use-case-category-tag">CATEGORY 04</span>
+                <h3 class="use-case-title">Digital Products</h3>
+              </div>
+            </div>
+            <ul class="use-case-list">
+              <li><span class="bullet-dot"></span><strong>Build intelligent apps</strong> with native agentic capabilities</li>
+              <li><span class="bullet-dot"></span><strong>Internal tools</strong> and dashboards equipped with AI copilots</li>
+              <li><span class="bullet-dot"></span><strong>Customer portals</strong> with natural language self-service</li>
+              <li><span class="bullet-dot"></span><strong>AI-powered digital experiences</strong> tailored for your market</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Section 10: Final High-Conversion CTA
+         ===================================================================== -->
+    <section class="final-cta-section" id="contact">
+      <div class="final-cta-container">
+        <div class="final-cta-card">
+          <div class="final-cta-ambient-glow" aria-hidden="true"></div>
+          <div class="final-cta-content">
+            <span class="final-cta-tag">GET STARTED WITH AGENTS</span>
+            <h2 class="final-cta-title">Find out where agents could create value in your business.</h2>
+            <p class="final-cta-subtitle">Start with a free conversation with Mindy and explore what's possible. No sales pressure, no complex setups.</p>
+            
+            <div class="final-cta-actions">
+              <button class="btn-primary btn-cta-main btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+                <span>Start my Free Pre-Analysis</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              
+              <button class="btn-secondary btn-cta-secondary btn-open-preanalysis" onclick="window.openMindyPreAnalysis()">
+                <span>Talk to Mindy</span>
+              </button>
+            </div>
+
+            <div class="final-cta-trust">
+              <span>✓ Free</span>
+              <span>•</span>
+              <span>✓ No obligation</span>
+              <span>•</span>
+              <span>✓ Takes only a few minutes</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1207,20 +1657,72 @@ agent = Agent(
 
   </main>
 
-  <!-- Footer -->
+  <!-- =====================================================================
+       Section 11: Structured Multi-Column Footer
+       ===================================================================== -->
   <footer class="footer">
     <div class="footer-container">
-      <a href="#" class="brand-logo">
-        <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo" style="height: 32px;">
-      </a>
       
-      <div class="footer-copy">
-        &copy; 2026 Olbrite Inc. All rights reserved. Powered by here.now.
+      <!-- Brand Column -->
+      <div class="footer-col footer-col-brand">
+        <a href="#" class="footer-brand-logo" aria-label="Olbrite Home">
+          <img src="assets/branding/olbrite-logo-transparent.png" alt="Olbrite Logo">
+        </a>
+        <p class="footer-tagline">People + Agents. Better work.</p>
+        <p class="footer-subtext">Olbrite builds AI agents, AI teams and agentic systems that work inside real businesses.</p>
+        <div class="footer-copyright-note">
+          &copy; 2026 Olbrite Inc. All rights reserved.
+        </div>
       </div>
+
+      <!-- Column 1: Solutions -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Solutions</h4>
+        <ul class="footer-links-list">
+          <li><a href="#core-solution">Olbrite Systems</a></li>
+          <li><a href="#core-solution">Olbrite Development</a></li>
+          <li><a href="#core-solution">Olbrite Experts</a></li>
+          <li><a href="#ai-teams">Multi-Agent Teams</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Learn -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Learn</h4>
+        <ul class="footer-links-list">
+          <li><a href="#what-is-an-agent">What is an AI Agent?</a></li>
+          <li><a href="#ai-teams">From One Agent to an AI Team</a></li>
+          <li><a href="#use-cases">Business Use Cases</a></li>
+          <li><a href="#integrations">Technology Ecosystem</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Company -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links-list">
+          <li><a href="#why-choose">Why Olbrite</a></li>
+          <li><a href="#proof">Our Track Record</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Commercial & Legal -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Get Started</h4>
+        <ul class="footer-links-list">
+          <li><a href="#pre-analysis" onclick="window.openMindyPreAnalysis(); return false;" class="highlight-link">Start Free Pre-Analysis</a></li>
+          <li><a href="#pre-analysis" onclick="window.openMindyPreAnalysis(); return false;">Talk to Mindy</a></li>
+          <li><a href="#contact">Book a call</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+
     </div>
   </footer>
 
   <!-- App Entry Script -->
-  <script type="module" src="js/main.js?v=3.4"></script>
+  <script type="module" src="js/main.js?v=3.5"></script>
 </body>
 </html>

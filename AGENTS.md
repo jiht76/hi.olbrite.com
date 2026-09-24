@@ -149,6 +149,43 @@ El Hero cuenta con dos estados principales:
 
 ---
 
+### G. De un Agente a un Equipo de IA (`#ai-teams`)
+
+- Pipeline visual de 5 agentes especializados: *Sales Agent*, *Research Agent*, *Qualification Agent*, *Follow-up Agent*, y *Human Approval*.
+- Matriz de colaboración: *Agent-to-Agent*, *Agent-to-Human*, y *Human-in-the-Loop*.
+
+---
+
+### H. Free Pre-Analysis con Mindy (`#pre-analysis`)
+
+- Conversión principal de la página guiada por Mindy como concierge activo.
+- 7 chips interactivos de intenciones de negocio con feedback dinámico inmediato:
+  - *Generate more leads*, *Respond faster*, *Automate repetitive work*, *Improve customer service*, *Connect disconnected systems*, *Build something with agents*, *Not sure yet*.
+- 4 pasos de exploración visual: *01 Your Business*, *02 Your Challenges*, *03 Agent Opportunities*, *04 Next Step*.
+- Disparador de alta conversión: `window.openMindyPreAnalysis(customIntent)` que inyecta y abre el widget oficial de **LeadConnector** (`data-widget-id="6aac49d1204f7932178f3c0e"`).
+
+---
+
+### I. Credenciales y Track Record Defendible (`#proof`)
+
+- Datos concretos y verificables: 20+ años de experiencia, $3M+ presupuestos gestionados, #1 Google Partner y Microsoft for Startups, 24/7 confiabilidad autónoma. Cero métricas ficticias.
+
+---
+
+### J. Casos de Uso Empresariales Prácticos (`#use-cases`)
+
+- 4 tarjetas operativas organizadas por departamento: *Sales*, *Customer Experience*, *Operations*, y *Digital Products*.
+
+---
+
+### K. Conversión Final y Footer (`#contact` y `.footer`)
+
+- Tarjeta envolvente en púrpura de lujo profundo (`#100624` a `#2a0845`) con microcopy de cero fricción (*Free • No obligation • Takes only a few minutes*).
+- Footer estructurado en 5 columnas: *Brand*, *Solutions*, *Learn*, *Company*, y *Get Started & Legal*.
+
+---
+
+
 ## 5. Tokens de Diseño del Sistema (Design Tokens)
 
 Definidos en `:root` dentro de `css/style.css`:
