@@ -1,4 +1,4 @@
-import { HeroController } from './hero-controller.js?v=3.0';
+import { HeroController } from './hero-controller.js?v=3.3';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Interactive Hero Stage
@@ -154,4 +154,161 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initAgentExplainer();
+
+  // 5. Interactive "The Olbrite Ecosystem" 3D Stage & Carousel
+  const initEcosystemStage = () => {
+    const stageWrapper = document.querySelector('#ecosystem-stage-wrapper');
+    const cardsTrack = document.querySelector('#ecosystem-cards-track');
+    const cards = Array.from(document.querySelectorAll('.ecosystem-card'));
+    const dots = Array.from(document.querySelectorAll('.ecosystem-dot'));
+    const prevBtn = document.querySelector('#ecosystem-prev-btn');
+    const nextBtn = document.querySelector('#ecosystem-next-btn');
+
+    if (!stageWrapper || !cardsTrack || cards.length === 0) return;
+
+    let currentIndex = 1; // Default to Center card: Olbrite Development (index 1)
+
+    const updateStage = (newIndex) => {
+      currentIndex = (newIndex + cards.length) % cards.length;
+
+      // Update dots
+      dots.forEach((dot, idx) => {
+        const isActive = idx === currentIndex;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-selected', String(isActive));
+      });
+
+      const isMobile = window.innerWidth <= 992;
+
+      cards.forEach((card, idx) => {
+        const rel = ((idx - currentIndex) % 3 + 3) % 3;
+
+        // Clear any inline styles so GPU transitions & :hover apply cleanly
+        card.style.order = '';
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        card.style.borderColor = '';
+        card.style.zIndex = '';
+        card.style.opacity = '';
+
+        if (rel === 0) {
+          // Center stage active card (in focus, sharp, prominent)
+          card.dataset.position = 'center';
+          card.classList.add('center-card');
+        } else if (rel === 1) {
+          // Right background card (tilted, distant, blurred)
+          card.dataset.position = 'right';
+          card.classList.remove('center-card');
+        } else {
+          // Left background card (tilted, distant, blurred)
+          card.dataset.position = 'left';
+          card.classList.remove('center-card');
+        }
+      });
+    };
+
+    // Navigation buttons
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => updateStage(currentIndex - 1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => updateStage(currentIndex + 1));
+    }
+
+    // Dot indicators
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetIdx = parseInt(dot.dataset.index, 10);
+        if (!isNaN(targetIdx)) {
+          updateStage(targetIdx);
+        }
+      });
+    });
+
+    // Clicking any side card brings it to center stage
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        if (currentIndex !== idx) {
+          updateStage(idx);
+        }
+      });
+    });
+
+    // Interactive Code Terminal Tabs in Card 2
+    const codeTabs = document.querySelectorAll('.term-tab');
+    const codeSnippets = document.querySelectorAll('.code-snippet');
+    codeTabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const tabKey = tab.dataset.tab;
+        codeTabs.forEach(t => t.classList.toggle('active', t === tab));
+        codeSnippets.forEach(snip => {
+          snip.classList.toggle('active', snip.id === `code-${tabKey}`);
+        });
+      });
+    });
+
+    // 3D Mousemove Parallax Tilt
+    let mouseX = 0, mouseY = 0;
+    let currentTiltX = 0, currentTiltY = 0;
+    let rafId = null;
+
+    const animateTilt = () => {
+      currentTiltX += (mouseY - currentTiltX) * 0.08;
+      currentTiltY += (mouseX - currentTiltY) * 0.08;
+
+      if (cardsTrack && window.innerWidth > 992) {
+        cardsTrack.style.transform = `rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+      }
+
+      if (Math.abs(mouseY - currentTiltX) > 0.04 || Math.abs(mouseX - currentTiltY) > 0.04) {
+        rafId = requestAnimationFrame(animateTilt);
+      } else {
+        rafId = null;
+      }
+    };
+
+    stageWrapper.addEventListener('mousemove', (e) => {
+      if (window.innerWidth <= 992) return;
+      const rect = stageWrapper.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      mouseX = x * 8;  // max 4 deg
+      mouseY = -y * 6; // max 3 deg
+      if (!rafId) rafId = requestAnimationFrame(animateTilt);
+    }, { passive: true });
+
+    stageWrapper.addEventListener('mouseleave', () => {
+      mouseX = 0;
+      mouseY = 0;
+      if (!rafId) rafId = requestAnimationFrame(animateTilt);
+    }, { passive: true });
+
+    // Touch Swipe gestures on mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    stageWrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    stageWrapper.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diffX = touchStartX - touchEndX;
+      if (diffX > 45) {
+        updateStage(currentIndex + 1); // Swipe left -> next
+      } else if (diffX < -45) {
+        updateStage(currentIndex - 1); // Swipe right -> prev
+      }
+    }, { passive: true });
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      updateStage(currentIndex);
+    }, { passive: true });
+
+    // Initialize initial state
+    updateStage(currentIndex);
+  };
+
+  initEcosystemStage();
 });

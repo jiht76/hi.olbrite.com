@@ -135,6 +135,18 @@ El Hero cuenta con dos estados principales:
 
 ---
 
+### F. The Olbrite Ecosystem: Escenario Flotante 3D (`#core-solution`)
+
+- Controlador en `js/main.js` (`initEcosystemStage`).
+- Reemplaza el grid plano anterior por un carrusel cinemático 3D con perspectiva óptica (`perspective: 1200px`) y Depth of Field:
+  - **Tarjeta Frontal**: Activa, sin desenfoque (`filter: blur(0px)`), elevada con resplandor violeta (`translate3d(0, 0, 75px)`).
+  - **Tarjetas Laterales**: Al fondo con desenfoque de cámara (`filter: blur(2.5px)` y `opacity: 0.72`), rotadas en el eje Y (`rotateY(18deg)` / `rotateY(-18deg)`).
+- Rotación continua interpolada por GPU (sin reordenamiento abrupto de flexbox) y fórmula modular `((idx - currentIndex) % 3 + 3) % 3`.
+- Dimensiones compactas (470px de alto) pensadas para visibilidad completa en viewport sin recortes ni scroll muerto.
+- Navegación múltiple: Flechas circulares prev/next, dots interactivos y clic directo sobre las tarjetas laterales para traerlas al centro.
+
+---
+
 ## 5. Tokens de Diseño del Sistema (Design Tokens)
 
 Definidos en `:root` dentro de `css/style.css`:

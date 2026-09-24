@@ -2773,3 +2773,1158 @@ html.intro-off #mindy-avatar-container {
   }
 }
 
+/* ==========================================================================
+   The Olbrite Ecosystem (3D Floating Stage, Perspective & Pedestal)
+   ========================================================================== */
+/* ==========================================================================
+   The Olbrite Ecosystem (3D Floating Stage, Cinematic Depth & Pedestal)
+   ========================================================================== */
+.ecosystem-section {
+  position: relative;
+  padding: 3.5rem 1.5rem 4.5rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 38%, rgba(243, 238, 255, 0.95) 0%, rgba(249, 250, 255, 1) 75%);
+}
+
+.ecosystem-section::before,
+.ecosystem-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 90px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ecosystem-section::before {
+  top: 0;
+  background: linear-gradient(180deg, #f9faff 0%, rgba(249, 250, 255, 0) 100%);
+}
+
+.ecosystem-section::after {
+  bottom: 0;
+  background: linear-gradient(0deg, #f9faff 0%, rgba(249, 250, 255, 0) 100%);
+}
+
+.ecosystem-bg-ambient {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  height: 420px;
+  background: radial-gradient(ellipse at center, rgba(157, 125, 248, 0.2) 0%, rgba(236, 72, 153, 0.07) 45%, rgba(249, 250, 255, 0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ecosystem-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 6;
+}
+
+/* Header */
+.ecosystem-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.ecosystem-tag {
+  letter-spacing: 0.14em;
+  font-weight: 750;
+  font-size: 0.78rem;
+  margin-bottom: 0.5rem;
+}
+
+.ecosystem-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  line-height: 1.15;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.ecosystem-title .title-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #2e1065 0%, #581c87 40%, #754be7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ecosystem-subtitle {
+  font-size: 0.98rem;
+  color: #64748b;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* 3D Stage Wrapper */
+.ecosystem-stage-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 510px;
+  padding-bottom: 15px;
+}
+
+.ecosystem-3d-scene {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  max-width: 1200px;
+  height: 485px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.ecosystem-cards-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Base Card Glassmorphism - Compact & Balanced */
+.ecosystem-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 345px;
+  max-width: 90vw;
+  height: 470px;
+  margin-top: -235px;
+  margin-left: -172px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 1.35rem 1.45rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, filter, opacity;
+}
+
+.card-glass-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  transform: rotate(25deg);
+  opacity: 0.6;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+.ecosystem-card:hover .card-glass-shine {
+  opacity: 0.85;
+  transform: rotate(25deg) translateY(-8px);
+}
+
+/* 3D Positions & Depth of Field (Desktop) */
+@media (min-width: 993px) {
+  /* Center Card: in focus, sharp, foreground, prominent */
+  .ecosystem-card[data-position="center"] {
+    transform: translate3d(0, 0, 75px) scale(1.02);
+    filter: blur(0px);
+    opacity: 1;
+    border-color: rgba(117, 75, 231, 0.38);
+    box-shadow: 0 25px 70px rgba(117, 75, 231, 0.2), 0 0 45px rgba(157, 125, 248, 0.25), inset 0 1px 2px rgba(255, 255, 255, 1);
+    z-index: 15;
+    pointer-events: auto;
+  }
+
+  .ecosystem-card[data-position="center"]:hover {
+    transform: translate3d(0, -6px, 90px) scale(1.035);
+    box-shadow: 0 35px 85px rgba(117, 75, 231, 0.26), 0 0 55px rgba(157, 125, 248, 0.35);
+    border-color: var(--primary);
+  }
+
+  /* Left Card: distant, tilted, blurred */
+  .ecosystem-card[data-position="left"] {
+    transform: translate3d(-370px, 0, -90px) rotateY(18deg) scale(0.88);
+    filter: blur(2.5px);
+    opacity: 0.72;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: -15px 20px 45px rgba(117, 75, 231, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+    z-index: 8;
+    pointer-events: auto;
+  }
+
+  .ecosystem-card[data-position="left"]:hover {
+    transform: translate3d(-360px, -6px, -45px) rotateY(12deg) scale(0.91);
+    filter: blur(1px);
+    opacity: 0.88;
+    border-color: rgba(117, 75, 231, 0.3);
+  }
+
+  /* Right Card: distant, tilted, blurred */
+  .ecosystem-card[data-position="right"] {
+    transform: translate3d(370px, 0, -90px) rotateY(-18deg) scale(0.88);
+    filter: blur(2.5px);
+    opacity: 0.72;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 15px 20px 45px rgba(117, 75, 231, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+    z-index: 8;
+    pointer-events: auto;
+  }
+
+  .ecosystem-card[data-position="right"]:hover {
+    transform: translate3d(360px, -6px, -45px) rotateY(-12deg) scale(0.91);
+    filter: blur(1px);
+    opacity: 0.88;
+    border-color: rgba(117, 75, 231, 0.3);
+  }
+}
+
+/* Card Header & Icons */
+.card-top-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-badge-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(117, 75, 231, 0.08);
+  border: 1px solid rgba(117, 75, 231, 0.16);
+  box-shadow: 0 4px 12px rgba(117, 75, 231, 0.06);
+}
+
+.badge-brand-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.badge-development {
+  background: linear-gradient(135deg, rgba(117, 75, 231, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+  border-color: rgba(117, 75, 231, 0.3);
+  color: var(--primary);
+}
+
+.code-bracket-symbol {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.badge-experts {
+  background: rgba(117, 75, 231, 0.08);
+  color: var(--primary);
+}
+
+.card-title-group {
+  flex: 1;
+}
+
+.card-main-heading {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 0.18rem;
+}
+
+.card-sub-heading {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Card Mockup 1: Olbrite Systems (Height 165px)
+   ========================================================================== */
+.mockup-systems {
+  background: linear-gradient(180deg, rgba(248, 249, 255, 0.95) 0%, rgba(243, 244, 255, 0.85) 100%);
+  border: 1px solid rgba(117, 75, 231, 0.14);
+  border-radius: 16px;
+  padding: 0.65rem 0.7rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 0.55rem;
+  height: 165px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.mockup-channels-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  width: 82px;
+  min-width: 82px;
+}
+
+.mini-channel-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 0.18rem 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+.channel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-wa { background: #25D366; box-shadow: 0 0 4px rgba(37, 211, 102, 0.5); }
+.dot-ig { background: #E1306C; box-shadow: 0 0 4px rgba(225, 48, 108, 0.5); }
+.dot-fb { background: #1877F2; box-shadow: 0 0 4px rgba(24, 119, 242, 0.5); }
+.dot-sms { background: #754be7; box-shadow: 0 0 4px rgba(117, 75, 231, 0.5); }
+.dot-mail { background: #EA4335; box-shadow: 0 0 4px rgba(234, 67, 53, 0.5); }
+.dot-web { background: #0284c7; box-shadow: 0 0 4px rgba(2, 132, 199, 0.5); }
+
+.mockup-feed-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.s3-widget {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(117, 75, 231, 0.16);
+  border-radius: 10px;
+  padding: 0.4rem 0.55rem;
+  box-shadow: 0 3px 10px rgba(117, 75, 231, 0.04);
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.widget-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.66rem;
+  color: var(--primary);
+}
+
+.pulsing-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 5px #10b981;
+  animation: pulseDot 1.6s infinite;
+}
+
+.widget-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+
+.feed-item {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  font-size: 0.64rem;
+}
+
+.feed-avatar {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.avatar-1 { background: linear-gradient(135deg, #754be7, #9d7df8); }
+.avatar-2 { background: linear-gradient(135deg, #ec4899, #f472b6); }
+.avatar-3 { background: linear-gradient(135deg, #06b6d4, #38bdf8); }
+
+.feed-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-name {
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-meta {
+  color: #94a3b8;
+  font-size: 0.58rem;
+  margin-left: 0.25rem;
+}
+
+.mockup-metric-badge {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(117, 75, 231, 0.16);
+  border-radius: 10px;
+  padding: 0.32rem 0.55rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(117, 75, 231, 0.04);
+}
+
+.metric-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.56rem;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.metric-count {
+  font-size: 1rem;
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.metric-delta {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.metric-bars-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px;
+}
+
+.chart-bar {
+  width: 4px;
+  height: var(--bar-h);
+  background: rgba(117, 75, 231, 0.28);
+  border-radius: 2px;
+  transition: height 0.6s ease;
+}
+
+.chart-bar.active {
+  background: var(--primary);
+  box-shadow: 0 0 6px rgba(117, 75, 231, 0.5);
+}
+
+/* ==========================================================================
+   Card Mockup 2: Olbrite Development (Height 165px)
+   ========================================================================== */
+.mockup-dev {
+  background: linear-gradient(180deg, #18112e 0%, #0d091e 100%);
+  border: 1px solid rgba(117, 75, 231, 0.35);
+  border-radius: 16px;
+  padding: 0.65rem 0.7rem;
+  margin-bottom: 0.75rem;
+  height: 165px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 0.55rem;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mockup-code-terminal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.terminal-tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.35rem;
+}
+
+.terminal-traffic-lights {
+  display: flex;
+  gap: 3px;
+}
+
+.terminal-traffic-lights span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.terminal-traffic-lights span:nth-child(1) { background: #ff5f56; }
+.terminal-traffic-lights span:nth-child(2) { background: #ffbd2e; }
+.terminal-traffic-lights span:nth-child(3) { background: #27c93f; }
+
+.terminal-tabs {
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: hidden;
+}
+
+.term-tab {
+  background: transparent;
+  border: none;
+  font-size: 0.62rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #94a3b8;
+  padding: 0.12rem 0.32rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.term-tab.active {
+  background: rgba(117, 75, 231, 0.4);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.terminal-code-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.code-snippet {
+  display: none;
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
+  line-height: 1.38;
+  color: #e2e8f0;
+  margin: 0;
+  white-space: pre;
+}
+
+.code-snippet.active {
+  display: block;
+}
+
+.token-kw { color: #c084fc; font-weight: 600; }
+.token-fn { color: #67e8f9; }
+.token-str { color: #86efac; }
+.token-bool { color: #fb923c; }
+.token-prop { color: #f1f5f9; }
+
+.mockup-phone-frame {
+  width: 72px;
+  min-width: 72px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.3rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.phone-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.phone-notch {
+  width: 18px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  align-self: center;
+  margin-bottom: 0.15rem;
+}
+
+.phone-app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.phone-logo-mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--primary-glow);
+}
+
+.phone-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  font-size: 0.52rem;
+  color: #cbd5e1;
+}
+
+.phone-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.14rem 0.24rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.p-icon {
+  width: 5px;
+  height: 5px;
+  border-radius: 2px;
+}
+
+.p-icon-1 { background: #38bdf8; }
+.p-icon-2 { background: #c084fc; }
+.p-icon-3 { background: #f472b6; }
+.p-icon-4 { background: #34d399; }
+
+.floating-tech-badges {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  display: flex;
+  gap: 0.25rem;
+  z-index: 5;
+}
+
+.tech-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  animation: floatBadge 3.2s ease-in-out infinite alternate;
+}
+
+.tech-badge.badge-cloud { animation-delay: 0s; }
+.tech-badge.badge-db { animation-delay: 0.6s; }
+.tech-badge.badge-link { animation-delay: 1.2s; }
+.tech-badge.badge-cube { animation-delay: 1.8s; }
+
+@keyframes floatBadge {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+/* ==========================================================================
+   Card Mockup 3: Olbrite Experts (Height 165px)
+   ========================================================================== */
+.mockup-experts {
+  background: linear-gradient(180deg, rgba(248, 249, 255, 0.95) 0%, rgba(243, 244, 255, 0.85) 100%);
+  border: 1px solid rgba(117, 75, 231, 0.14);
+  border-radius: 16px;
+  padding: 0.65rem 0.7rem;
+  margin-bottom: 0.75rem;
+  height: 165px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.mockup-roadmap-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(117, 75, 231, 0.16);
+  border-radius: 10px;
+  padding: 0.35rem 0.55rem;
+  box-shadow: 0 3px 10px rgba(117, 75, 231, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.22rem;
+}
+
+.roadmap-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 5px rgba(117, 75, 231, 0.5);
+}
+
+.roadmap-header h4 {
+  font-size: 0.7rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0;
+}
+
+.roadmap-steps-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+}
+
+.roadmap-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.28rem;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.28rem;
+  border-radius: 6px;
+}
+
+.roadmap-step.done {
+  background: rgba(16, 185, 129, 0.08);
+  color: #059669;
+}
+
+.roadmap-step.in-progress {
+  background: rgba(117, 75, 231, 0.1);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.roadmap-step.next {
+  background: rgba(0, 0, 0, 0.03);
+  color: #94a3b8;
+}
+
+.step-check {
+  font-weight: 800;
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.step-info strong {
+  font-size: 0.62rem;
+}
+
+.step-desc {
+  font-size: 0.52rem;
+  color: #64748b;
+}
+
+.mockup-consult-badge {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(117, 75, 231, 0.16);
+  border-radius: 10px;
+  padding: 0.32rem 0.55rem;
+  box-shadow: 0 3px 10px rgba(117, 75, 231, 0.04);
+}
+
+.consult-badge-header {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #1e1b4b;
+}
+
+.consult-stat {
+  font-size: 0.58rem;
+  color: #64748b;
+  margin: 0.06rem 0 0.16rem;
+}
+
+.consult-metrics-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 0.16rem;
+}
+
+.c-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c-val {
+  font-size: 0.82rem;
+  font-weight: 850;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.c-sub {
+  font-size: 0.54rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   Features List & CTA Buttons
+   ========================================================================== */
+.card-features-list {
+  list-style: none;
+  margin: 0.5rem 0 0.75rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.36rem;
+}
+
+.card-features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: #334155;
+  line-height: 1.32;
+}
+
+.check-icon {
+  width: 15px;
+  height: 15px;
+  min-width: 15px;
+  border-radius: 50%;
+  background: rgba(117, 75, 231, 0.12);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+.card-cta-row {
+  margin-top: auto;
+}
+
+.card-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.62rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.btn-systems {
+  background: #ffffff;
+  color: var(--primary);
+  border: 1.5px solid rgba(117, 75, 231, 0.25);
+  box-shadow: 0 4px 12px rgba(117, 75, 231, 0.08);
+}
+
+.btn-systems:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(117, 75, 231, 0.25);
+}
+
+.btn-development {
+  background: linear-gradient(135deg, #754be7 0%, #ec4899 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 20px rgba(117, 75, 231, 0.35);
+}
+
+.btn-development:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(117, 75, 231, 0.45);
+}
+
+.btn-experts {
+  background: #ffffff;
+  color: #1e1b4b;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.btn-experts:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(117, 75, 231, 0.12);
+}
+
+/* ==========================================================================
+   Illuminated 3D Circular Pedestal
+   ========================================================================== */
+.ecosystem-pedestal-platform {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  max-width: 950px;
+  height: 110px;
+  pointer-events: none;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pedestal-surface {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: perspective(700px) rotateX(68deg);
+}
+
+.pedestal-ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ring-outer {
+  inset: 0;
+  border: 3px solid rgba(117, 75, 231, 0.28);
+  box-shadow: 0 0 35px rgba(157, 125, 248, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.85);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6) 0%, rgba(240, 235, 255, 0.3) 60%, rgba(157, 125, 248, 0.15) 100%);
+}
+
+.ring-mid {
+  inset: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.ring-inner {
+  inset: 28px;
+  border: 1.5px solid rgba(117, 75, 231, 0.35);
+  background: radial-gradient(ellipse at center, rgba(157, 125, 248, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.pedestal-core-glow {
+  position: absolute;
+  width: 65%;
+  height: 45%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(157, 125, 248, 0.7) 0%, rgba(117, 75, 231, 0) 70%);
+  filter: blur(16px);
+  animation: pulsePedestal 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulsePedestal {
+  0% { transform: scale(0.95); opacity: 0.65; }
+  100% { transform: scale(1.05); opacity: 0.95; }
+}
+
+.pedestal-shadow {
+  position: absolute;
+  bottom: -20px;
+  width: 92%;
+  height: 45px;
+  background: radial-gradient(ellipse, rgba(117, 75, 231, 0.18) 0%, transparent 75%);
+  filter: blur(20px);
+}
+
+/* ==========================================================================
+   Navigation Arrows & Pagination Dots
+   ========================================================================== */
+.stage-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(117, 75, 231, 0.22);
+  color: #1e1b4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 25;
+  box-shadow: 0 6px 20px rgba(117, 75, 231, 0.14);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.stage-nav-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 25px rgba(117, 75, 231, 0.35);
+  border-color: var(--primary);
+}
+
+.stage-nav-prev {
+  left: max(0.5rem, calc(50% - 610px));
+}
+
+.stage-nav-next {
+  right: max(0.5rem, calc(50% - 610px));
+}
+
+.ecosystem-dots-container {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.ecosystem-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(117, 75, 231, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  padding: 0;
+}
+
+.ecosystem-dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(117, 75, 231, 0.6);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 992px) {
+  .ecosystem-section {
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  .ecosystem-3d-scene {
+    perspective: 900px;
+    height: 480px;
+  }
+
+  .ecosystem-card {
+    width: 90%;
+    max-width: 350px;
+    height: 460px;
+    margin-top: -230px;
+    margin-left: -45%;
+  }
+
+  .ecosystem-card[data-position="center"] {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+    pointer-events: auto;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(117, 75, 231, 0.16);
+  }
+
+  .ecosystem-card[data-position="left"] {
+    transform: translate3d(-110%, 0, 0) scale(0.9);
+    opacity: 0;
+    filter: blur(3px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ecosystem-card[data-position="right"] {
+    transform: translate3d(110%, 0, 0) scale(0.9);
+    opacity: 0;
+    filter: blur(3px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .stage-nav-prev {
+    left: 0.5rem;
+  }
+
+  .stage-nav-next {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-card {
+    width: 94%;
+    margin-left: -47%;
+    padding: 1.25rem 1.15rem;
+  }
+
+  .stage-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+

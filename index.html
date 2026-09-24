@@ -34,7 +34,7 @@
   </script>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/style.css?v=3.3">
 </head>
 <body class="light-theme hero-locked">
 
@@ -822,37 +822,345 @@
       </div>
     </section>
 
-    <!-- Core Solution Section -->
-    <section class="section" id="core-solution">
-      <div class="section-header">
-        <span class="section-tag">The Core Solution</span>
-        <h2 class="section-title">Unified Visibility Across Every Touchpoint</h2>
-      </div>
+    <!-- =====================================================================
+         The Olbrite Ecosystem (3D Floating Interactive Stage)
+         ===================================================================== -->
+    <section class="ecosystem-section" id="core-solution">
+      <div id="ecosystem" class="anchor-offset"></div>
+      <div class="ecosystem-bg-ambient"></div>
 
-      <div class="cards-grid-3">
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <h3>Unified Inbox</h3>
-          <p>Bring WhatsApp, Instagram DMs, Messenger, SMS, and email into one coherent timeline. Never lose context or let a lead go cold.</p>
+      <div class="ecosystem-container">
+        <!-- Header -->
+        <div class="ecosystem-header">
+          <span class="section-tag ecosystem-tag">THE OLBRITE ECOSYSTEM</span>
+          <h2 class="ecosystem-title">Three ways we help businesses <span class="title-highlight">put AI to work.</span></h2>
+          <p class="ecosystem-subtitle">Systems, development and expert guidance — designed to help you launch faster and grow smarter.</p>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        <!-- 3D Carousel Stage Wrapper -->
+        <div class="ecosystem-stage-wrapper" id="ecosystem-stage-wrapper">
+          <!-- Left Arrow Navigation -->
+          <button class="stage-nav-btn stage-nav-prev" id="ecosystem-prev-btn" aria-label="Tarjeta anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+
+          <!-- 3D Scene / Perspective Viewport -->
+          <div class="ecosystem-3d-scene" id="ecosystem-3d-scene">
+            <div class="ecosystem-cards-track" id="ecosystem-cards-track">
+
+              <!-- CARD 1: Olbrite Systems -->
+              <article class="ecosystem-card card-systems" data-index="0" data-position="left">
+                <div class="card-glass-shine"></div>
+                
+                <div class="card-top-header">
+                  <div class="card-badge-icon badge-systems">
+                    <img src="assets/branding/favicon-glass-48.png" alt="Olbrite Icon" class="badge-brand-icon">
+                  </div>
+                  <div class="card-title-group">
+                    <h3 class="card-main-heading">Olbrite Systems</h3>
+                    <p class="card-sub-heading">Ready-to-use systems for sales, service and operations.</p>
+                  </div>
+                </div>
+
+                <!-- Product UI Mockup: Channels + Live S3 Feed + Metrics -->
+                <div class="card-mockup-stage mockup-systems">
+                  <!-- Mini Omnichannel Rail -->
+                  <div class="mockup-channels-col">
+                    <div class="mini-channel-pill" title="WhatsApp"><span class="channel-dot dot-wa"></span>WhatsApp</div>
+                    <div class="mini-channel-pill" title="Instagram"><span class="channel-dot dot-ig"></span>Instagram</div>
+                    <div class="mini-channel-pill" title="Messenger"><span class="channel-dot dot-fb"></span>Messenger</div>
+                    <div class="mini-channel-pill" title="SMS"><span class="channel-dot dot-sms"></span>SMS</div>
+                    <div class="mini-channel-pill" title="Email"><span class="channel-dot dot-mail"></span>Email</div>
+                    <div class="mini-channel-pill" title="Web Chat"><span class="channel-dot dot-web"></span>Web Chat</div>
+                  </div>
+
+                  <!-- Central Feed Card & Metrics -->
+                  <div class="mockup-feed-group">
+                    <div class="mockup-glass-widget s3-widget">
+                      <div class="widget-header">
+                        <div class="widget-brand-pill">
+                          <span class="pulsing-live-dot"></span>
+                          <strong>Olbrite S3</strong>
+                        </div>
+                      </div>
+                      <div class="widget-feed-list">
+                        <div class="feed-item">
+                          <div class="feed-avatar avatar-1"></div>
+                          <div class="feed-details">
+                            <span class="feed-name">New lead</span>
+                            <span class="feed-meta">2m</span>
+                          </div>
+                        </div>
+                        <div class="feed-item">
+                          <div class="feed-avatar avatar-2"></div>
+                          <div class="feed-details">
+                            <span class="feed-name">Appointment booked</span>
+                            <span class="feed-meta">24m</span>
+                          </div>
+                        </div>
+                        <div class="feed-item">
+                          <div class="feed-avatar avatar-3"></div>
+                          <div class="feed-details">
+                            <span class="feed-name">Follow up</span>
+                            <span class="feed-meta">1h</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Metric Badge with Bars -->
+                    <div class="mockup-metric-badge">
+                      <div class="metric-top">
+                        <span class="metric-label">Leads</span>
+                        <span class="metric-count">1,482</span>
+                        <span class="metric-delta">↑ +312%</span>
+                      </div>
+                      <div class="metric-bars-chart">
+                        <span class="chart-bar" style="--bar-h: 40%;"></span>
+                        <span class="chart-bar" style="--bar-h: 65%;"></span>
+                        <span class="chart-bar" style="--bar-h: 50%;"></span>
+                        <span class="chart-bar" style="--bar-h: 85%;"></span>
+                        <span class="chart-bar active" style="--bar-h: 100%;"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature Checkpoints -->
+                <ul class="card-features-list">
+                  <li><span class="check-icon">✓</span> Olbrite S3 for conversations, CRM and automation</li>
+                  <li><span class="check-icon">✓</span> Olbrite Multi for coordinated AI and human workflows</li>
+                  <li><span class="check-icon">✓</span> Omnichannel communication across WhatsApp, Instagram and more</li>
+                  <li><span class="check-icon">✓</span> Built to help teams respond, follow up and scale</li>
+                </ul>
+
+                <!-- CTA -->
+                <div class="card-cta-row">
+                  <a href="#demo" class="card-action-btn btn-systems">
+                    <span>Explore Systems</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </article>
+
+              <!-- CARD 2: Olbrite Development (Center Protagonist) -->
+              <article class="ecosystem-card card-development center-card" data-index="1" data-position="center">
+                <div class="card-glass-shine"></div>
+                
+                <div class="card-top-header">
+                  <div class="card-badge-icon badge-development">
+                    <span class="code-bracket-symbol">&lt;/&gt;</span>
+                  </div>
+                  <div class="card-title-group">
+                    <h3 class="card-main-heading">Olbrite Development</h3>
+                    <p class="card-sub-heading">Custom solutions built around your business.</p>
+                  </div>
+                </div>
+
+                <!-- Product UI Mockup: Interactive Terminal Code Editor + Smartphone UI + Floating Badges -->
+                <div class="card-mockup-stage mockup-dev">
+                  <!-- Live Code Terminal with Tabs -->
+                  <div class="mockup-code-terminal">
+                    <div class="terminal-tab-bar">
+                      <div class="terminal-traffic-lights">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <div class="terminal-tabs">
+                        <button class="term-tab active" data-tab="app">app.ts</button>
+                        <button class="term-tab" data-tab="api">api.py</button>
+                        <button class="term-tab" data-tab="flow">flow.ts</button>
+                      </div>
+                    </div>
+                    <div class="terminal-code-body">
+                      <pre class="code-snippet active" id="code-app"><code><span class="token-kw">const</span> app = <span class="token-kw">new</span> <span class="token-fn">OlbriteApp</span>({
+  <span class="token-prop">AI</span>: <span class="token-bool">true</span>,
+  <span class="token-prop">integrations</span>: [<span class="token-str">"crm"</span>, <span class="token-str">"payments"</span>],
+  <span class="token-prop">workflows</span>: <span class="token-str">"automate"</span>,
+});</code></pre>
+                      <pre class="code-snippet" id="code-api"><code><span class="token-kw">from</span> olbrite <span class="token-kw">import</span> Agent
+
+agent = Agent(
+  <span class="token-prop">model</span>=<span class="token-str">"olbrite-v3"</span>,
+  <span class="token-prop">skills</span>=[<span class="token-str">"lead_qualify"</span>, <span class="token-str">"calendar"</span>],
+  <span class="token-prop">autonomous</span>=<span class="token-bool">True</span>
+)</code></pre>
+                      <pre class="code-snippet" id="code-flow"><code><span class="token-kw">export</span> <span class="token-kw">default</span> {
+  <span class="token-prop">channels</span>: [<span class="token-str">"whatsapp"</span>, <span class="token-str">"slack"</span>],
+  <span class="token-prop">syncRate</span>: <span class="token-str">"realtime"</span>,
+  <span class="token-fn">onMessage</span>: (msg) =&gt; agent.<span class="token-fn">respond</span>(msg)
+};</code></pre>
+                    </div>
+                  </div>
+
+                  <!-- Smartphone UI Mockup -->
+                  <div class="mockup-phone-frame">
+                    <div class="phone-screen">
+                      <div class="phone-notch"></div>
+                      <div class="phone-app-header">
+                        <span class="phone-logo-mark"></span>
+                        <span class="phone-app-title">Olbrite</span>
+                      </div>
+                      <div class="phone-menu-list">
+                        <div class="phone-nav-row"><span class="p-icon p-icon-1"></span> Dashboard</div>
+                        <div class="phone-nav-row"><span class="p-icon p-icon-2"></span> AI Assistant</div>
+                        <div class="phone-nav-row"><span class="p-icon p-icon-3"></span> Customers</div>
+                        <div class="phone-nav-row"><span class="p-icon p-icon-4"></span> Automations</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Floating Tech Capability Icons (3D badges) -->
+                  <div class="floating-tech-badges">
+                    <div class="tech-badge badge-cloud" title="Cloud Native">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <div class="tech-badge badge-db" title="Enterprise DB Sync">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </div>
+                    <div class="tech-badge badge-link" title="REST & GraphQL APIs">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    </div>
+                    <div class="tech-badge badge-cube" title="Modular Workflows">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8Z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature Checkpoints -->
+                <ul class="card-features-list">
+                  <li><span class="check-icon">✓</span> Websites, mobile apps and internal tools</li>
+                  <li><span class="check-icon">✓</span> AI-powered features and custom integrations</li>
+                  <li><span class="check-icon">✓</span> API connections and workflow automation</li>
+                  <li><span class="check-icon">✓</span> Designed for real operations, not just demos</li>
+                </ul>
+
+                <!-- CTA -->
+                <div class="card-cta-row">
+                  <a href="#demo" class="card-action-btn btn-development">
+                    <span>Explore Development</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </article>
+
+              <!-- CARD 3: Olbrite Experts -->
+              <article class="ecosystem-card card-experts" data-index="2" data-position="right">
+                <div class="card-glass-shine"></div>
+                
+                <div class="card-top-header">
+                  <div class="card-badge-icon badge-experts">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div class="card-title-group">
+                    <h3 class="card-main-heading">Olbrite Experts</h3>
+                    <p class="card-sub-heading">Strategy, implementation and ongoing support.</p>
+                  </div>
+                </div>
+
+                <!-- Product UI Mockup: AI Roadmap Strategy Card + Consultation Metrics -->
+                <div class="card-mockup-stage mockup-experts">
+                  <!-- AI Roadmap Card -->
+                  <div class="mockup-roadmap-card">
+                    <div class="roadmap-header">
+                      <span class="roadmap-badge-dot"></span>
+                      <h4>AI Roadmap</h4>
+                    </div>
+                    <div class="roadmap-steps-list">
+                      <div class="roadmap-step done">
+                        <span class="step-check">✓</span>
+                        <div class="step-info">
+                          <strong>Diagnose</strong>
+                          <span class="step-desc">Opportunity &amp; readiness mapping</span>
+                        </div>
+                      </div>
+                      <div class="roadmap-step done">
+                        <span class="step-check">✓</span>
+                        <div class="step-info">
+                          <strong>Plan</strong>
+                          <span class="step-desc">Architecture &amp; KPI targets</span>
+                        </div>
+                      </div>
+                      <div class="roadmap-step in-progress">
+                        <span class="step-check">⚡</span>
+                        <div class="step-info">
+                          <strong>Implement</strong>
+                          <span class="step-desc">Custom models &amp; integrations</span>
+                        </div>
+                      </div>
+                      <div class="roadmap-step next">
+                        <span class="step-check">○</span>
+                        <div class="step-info">
+                          <strong>Optimize</strong>
+                          <span class="step-desc">Supervised self-improvement</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Executive Impact Callout Card -->
+                  <div class="mockup-consult-badge">
+                    <div class="consult-badge-header">
+                      <span class="consult-icon">🎯</span>
+                      <span>Dedicated Lead Architect</span>
+                    </div>
+                    <p class="consult-stat">24/7 Monitoring &amp; Human-in-the-Loop</p>
+                    <div class="consult-metrics-row">
+                      <div class="c-metric">
+                        <span class="c-val">&lt; 14d</span>
+                        <span class="c-sub">Time to Live</span>
+                      </div>
+                      <div class="c-metric">
+                        <span class="c-val">99.8%</span>
+                        <span class="c-sub">Uptime SLA</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Feature Checkpoints -->
+                <ul class="card-features-list">
+                  <li><span class="check-icon">✓</span> AI diagnosis and opportunity mapping</li>
+                  <li><span class="check-icon">✓</span> Process design and implementation planning</li>
+                  <li><span class="check-icon">✓</span> Training, supervision and optimization</li>
+                  <li><span class="check-icon">✓</span> Guidance to help your team adopt AI with confidence</li>
+                </ul>
+
+                <!-- CTA -->
+                <div class="card-cta-row">
+                  <a href="#demo" class="card-action-btn btn-experts">
+                    <span>Work with our experts</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </article>
+
+            </div>
           </div>
-          <h3>Predictive Lead Scoring</h3>
-          <p>Real-time conversational sentiment analysis prioritizes leads ready to purchase, alerting your closers at the exact golden minute.</p>
+
+          <!-- Right Arrow Navigation -->
+          <button class="stage-nav-btn stage-nav-next" id="ecosystem-next-btn" aria-label="Tarjeta siguiente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
+          <!-- 3D Circular Illuminated Pedestal Platform -->
+          <div class="ecosystem-pedestal-platform" aria-hidden="true">
+            <div class="pedestal-surface">
+              <div class="pedestal-ring ring-outer"></div>
+              <div class="pedestal-ring ring-mid"></div>
+              <div class="pedestal-ring ring-inner"></div>
+              <div class="pedestal-core-glow"></div>
+            </div>
+            <div class="pedestal-shadow"></div>
+          </div>
+
+          <!-- Carousel Pagination Dots -->
+          <div class="ecosystem-dots-container" role="tablist" aria-label="Seleccionar tarjeta">
+            <button class="ecosystem-dot" data-index="0" role="tab" aria-selected="false" aria-label="Olbrite Systems"></button>
+            <button class="ecosystem-dot active" data-index="1" role="tab" aria-selected="true" aria-label="Olbrite Development"></button>
+            <button class="ecosystem-dot" data-index="2" role="tab" aria-selected="false" aria-label="Olbrite Experts"></button>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-          </div>
-          <h3>Performance Analytics</h3>
-          <p>Holographic visibility into agent resolution speed, pipeline velocity, team quotas and multichannel attribution ROI.</p>
-        </div>
       </div>
     </section>
 
@@ -948,6 +1256,6 @@
   </footer>
 
   <!-- App Entry Script -->
-  <script type="module" src="js/main.js?v=3.0"></script>
+  <script type="module" src="js/main.js?v=3.3"></script>
 </body>
 </html>
